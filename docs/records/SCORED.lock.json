@@ -1,0 +1,19 @@
+{
+ "registration": "REGISTRATION-scored.md",
+ "registration_sha256": "6567a07c2fe7d1286ea48214f2d8583cc1ddb32c0b2be95c4d099fd2162fac7b",
+ "commit": "2fe21f3512672c3de734bcebe36089efa70cfbb8",
+ "params_sha256": "bd0a0cc77c0f02006b5f9244ce723aa9c8e7c05f8a0dd9b8648f2e083170523d",
+ "net_sha256": "a027caad2b48dacaa91be3a40bf598d8f43786e4fa1ce1ef30811b561733dd60",
+ "net2_sha256": "895ca388a192309494bf5c24d93a90c42f47c226b3f7ee2eeb11955ee5769523",
+ "bundle_sha256": "473def4e586eeee7e413092e93205d602c45551623746a5fc05893812acc1db2",
+ "protocol": {
+  "split": "test",
+  "group": "all",
+  "seeds": [
+   142,
+   171
+  ],
+  "init_state": 0
+ },
+ "locked_at": "2026-11-17T13:05:03-0600"
+}

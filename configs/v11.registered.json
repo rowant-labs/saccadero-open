@@ -1,0 +1,333 @@
+{
+ "arm_cam_robot": {
+  "register": {
+   "use": "scene"
+  }
+ },
+ "arm_image": {
+  "last_resort": true
+ },
+ "arm_joints": {
+  "guard_mm": 20.0,
+  "readings_fit": {}
+ },
+ "behind_occluder": {
+  "min_px": 25000,
+  "share": 0.25,
+  "standing_max_px": 20000,
+  "untold": true
+ },
+ "colour": {
+  "calib": "arm",
+  "depth": "net",
+  "device": "cuda",
+  "net": "/workspace/out/colour-long/net/last.pt",
+  "net2": "/workspace/out/colour2/net/last.pt"
+ },
+ "delay_comp": {
+  "caught_elbow": true,
+  "close_hold_cmd": true,
+  "grip_as_sent": true,
+  "grip_echo": true,
+  "leap_trust": true,
+  "no_answer_assume": true,
+  "replan_late_only": true,
+  "start_lag": true,
+  "unlock": true,
+  "unlock_back": true
+ },
+ "fallback_blob_on_table": true,
+ "fallback_on_table": true,
+ "fallback_own": true,
+ "fallback_stand": {},
+ "fallback_top": true,
+ "fixture_face_in": "carcass",
+ "fixture_memory": {
+  "libero_goal": {
+   "wooden_cabinet": {
+    "fit_first_m": 0.04,
+    "pos": [
+     0.03,
+     -0.234,
+     0.9076
+    ],
+    "yaw_deg": 180.0
+   }
+  }
+ },
+ "fixture_no_flip": true,
+ "fixture_turn_max_deg": 45,
+ "learn_after_fail": {
+  "attempts": 2,
+  "min_left": 190,
+  "retreat": 20
+ },
+ "learn_ask_known": {
+  "max_things": 3,
+  "max_types": 8,
+  "move_max_m": 0.03,
+  "near_m": 0.15,
+  "next_need": 91,
+  "own": true,
+  "own_near": {
+   "any": [
+    {
+     "cover": 0.85,
+     "inlier": 0.93,
+     "seen": 0.45
+    },
+    {
+     "cover": 0.6,
+     "inlier": 0.93,
+     "seen": 0.65
+    }
+   ]
+  },
+  "own_top_min": {
+   "cover": 0.95,
+   "inlier": 0.93,
+   "seen": 0.78
+  },
+  "rejected": false
+ },
+ "learn_calib_cue": true,
+ "learn_forms": {
+  "own_first": [
+   "put"
+  ],
+  "steps": false
+ },
+ "learn_in_episode": true,
+ "learn_keep": {
+  "times": 1
+ },
+ "learn_late": {
+  "min_left": 209
+ },
+ "learn_looks": "fast",
+ "learn_rank_known": {
+  "margin": 0.1
+ },
+ "learn_top_first": {},
+ "learn_way_back": {
+  "attempts": 1,
+  "min_left": 71
+ },
+ "learn_wrist_stereo": {
+  "dt_lag_ms": 0.0
+ },
+ "lfb_library": "/Volumes/RowantNVMe/rowant-cold/runs/pro2/long-lib",
+ "line": "colour",
+ "m1": {
+  "agent": {
+   "T_attempt": 70,
+   "brake_k": 1.5,
+   "c1_soft": true,
+   "c1_stand": true,
+   "c2_band_lo_m": 0.012,
+   "c2_trust_gap": true,
+   "c3_measured": true,
+   "c3_recheck": true,
+   "cap_box": true,
+   "carry_watch": true,
+   "clear_cover": true,
+   "close_early_m": 0.025,
+   "close_window": 2,
+   "cross_descent_free": true,
+   "detour_from_cross": true,
+   "detour_seen": true,
+   "drop_predict": true,
+   "drop_rigid": true,
+   "empty_next": true,
+   "empty_view_m": 0.28,
+   "held_jump_max_m": 0.015,
+   "held_tilt_max_deg": 10,
+   "lag_lift_no_settle": true,
+   "lag_settle_pre": true,
+   "lag_skip_release_fix": true,
+   "lift_fast": true,
+   "look_cross": true,
+   "look_route_only": false,
+   "look_stall": 1,
+   "look_start": false,
+   "lower_cap": 1.0,
+   "lower_tol_m": 0.006,
+   "open_box": true,
+   "open_close_early_m": 0.012,
+   "open_fast": true,
+   "open_gap_check": true,
+   "open_pre_pass": true,
+   "open_pull_full": true,
+   "open_pull_straight": true,
+   "open_release_early": 2,
+   "open_relook": true,
+   "open_reopen_cmd": true,
+   "open_retreat_pass_m": 0.03,
+   "open_settle": true,
+   "open_slip_check": true,
+   "open_verify": true,
+   "place_free_xy": true,
+   "pull_end_early": true,
+   "pull_stall_stop": true,
+   "release_here": true,
+   "relook_place": true,
+   "rest_m": 0.008,
+   "rise_first": true,
+   "route_empty": true,
+   "share_keep_up_m": 0.04,
+   "side_wide_k": 200,
+   "stage_above_m": 0.015,
+   "stage_release_early": 3,
+   "take_close_dz_m": 0.025,
+   "take_down_lat_m": 0.012,
+   "take_hold_quick": true,
+   "take_lift_carry": true,
+   "take_release_early": 2,
+   "take_turn_early": true,
+   "tell_open": true,
+   "transit_around": true,
+   "transit_cut": true,
+   "transit_unexplained": true
+  }
+ },
+ "misread_target": {},
+ "overhang_open_need": 85,
+ "relation_look": true,
+ "relation_single": true,
+ "relation_standin_strict": true,
+ "relook_strict": true,
+ "robot_dir": "/workspace/monty/rowant_lab/pro2/robot",
+ "sequence": true,
+ "sequence_chain": true,
+ "sequence_reserve": 130,
+ "sequence_retry": true,
+ "server": {
+  "arm_cam": {
+   "second": {}
+  },
+  "extra_blob_top_m": 0.015,
+  "learn_ask_known": {
+   "cover_min": 0.95,
+   "inlier_min": 0.93,
+   "seen_min": 0.55
+  },
+  "learn_check_own": true,
+  "learn_in_episode": true,
+  "learn_rank_floor": {
+   "min_vox": 500
+  },
+  "learn_rank_known": {
+   "margin": 0.1
+  },
+  "learn_top_first": {
+   "agent": "carve",
+   "self_px": 10
+  },
+  "learn_wrist_stereo": {
+   "threads": 2
+  },
+  "lfb_library": "/Volumes/RowantNVMe/rowant-cold/runs/pro2/long-lib",
+  "report_extra": true,
+  "routes": {
+   "libero_goal": {
+    "fallback": [],
+    "search": [
+     "plate",
+     "flat_stove",
+     "wooden_cabinet",
+     "wine_rack"
+    ],
+    "texture_first": []
+   },
+   "libero_long_kitchen": {
+    "fallback": [],
+    "search": [
+     "flat_stove",
+     "white_cabinet",
+     "microwave",
+     "wine_rack",
+     "moka_pot"
+    ],
+    "texture_first": []
+   },
+   "libero_long_living_room": {
+    "fallback": [],
+    "search": [
+     "basket",
+     "plate"
+    ],
+    "texture_first": []
+   },
+   "libero_long_study": {
+    "fallback": [],
+    "search": [
+     "desk_caddy",
+     "black_book"
+    ],
+    "texture_first": []
+   },
+   "libero_object": {
+    "fallback": [],
+    "search": [
+     "basket"
+    ],
+    "texture_first": []
+   },
+   "libero_spatial": {
+    "fallback": [],
+    "search": [
+     "plate",
+     "glazed_rim_porcelain_ramekin",
+     "flat_stove",
+     "wooden_cabinet",
+     "cookies"
+    ],
+    "texture_first": [
+     "cookies"
+    ]
+   }
+  },
+  "self_front_m": 0.05,
+  "support": {
+   "memory": {
+    "libero_goal": {
+     "wooden_cabinet": [
+      {
+       "pos": [
+        0.03,
+        -0.234,
+        0.9076
+       ],
+       "yaw_deg": 180.0
+      }
+     ]
+    },
+    "libero_spatial": {
+     "wooden_cabinet": [
+      {
+       "pos": [
+        0.0286,
+        -0.2677,
+        0.9065
+       ],
+       "yaw_deg": 154.3
+      }
+     ]
+    }
+   },
+   "twin_prior": {
+    "inward": {
+     "suites": [
+      "libero_goal",
+      "libero_spatial"
+     ]
+    }
+   }
+  }
+ },
+ "settle_first": {},
+ "shared_skip_at_place": true,
+ "stage_sweep": "stage",
+ "take_by_open": true,
+ "take_near_rim": true
+}

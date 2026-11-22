@@ -1,0 +1,9 @@
+# The perception server's environment: no simulator, no torch. Python 3.11.11.
+# These are the versions on the machines of both scored runs. The worker and the server check each other's
+# Python and numpy versions when they connect (rowant_lab/libero_env/m2_bridge.py, EXPECTED_VERSIONS).
+charset-normalizer==3.5.1
+numpy==2.4.6
+opencv-python==4.13.0.92
+pillow==12.3.0
+scikit-image==0.26.0
+scipy==1.17.1

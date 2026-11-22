@@ -1,0 +1,46 @@
+# The worker's environment: the simulator side. Python 3.11.11.
+# These are the versions on the machines of both scored runs. scripts/setup_env.sh installs them and then
+# replaces torch by the CUDA 12.4 build of the same version (torch==2.5.1+cu124).
+# The benchmark's own packages (libero, libero_remote) are not installed: they are used from your download.
+absl-py==2.5.0
+bddl==1.0.1
+cloudpickle==3.1.2
+contourpy==1.3.3
+cycler==0.12.1
+easydict==1.13
+etils==1.14.0
+filelock==3.32.7
+fonttools==4.66.1
+fsspec==2026.7.0
+future==1.0.0
+glfw==2.11.0
+gym-notices==0.1.0
+gym==0.25.2
+h5py==3.11.0
+imageio==2.35.1
+Jinja2==3.1.6
+kiwisolver==1.5.1
+llvmlite==0.50.0
+MarkupSafe==3.0.3
+matplotlib==3.11.2
+mpmath==1.3.0
+mujoco==3.2.3
+networkx==3.6.1
+numba==0.68.0
+numpy==1.26.4
+opencv-python==4.11.0.86
+packaging==26.3
+pillow==12.3.0
+PyOpenGL==3.1.10
+pyparsing==3.3.3
+python-dateutil==2.9.0.post0
+PyYAML==6.0.3
+robosuite==1.4.0
+scipy==1.17.1
+six==1.17.0
+sympy==1.13.1
+termcolor==3.3.0
+torch==2.5.1
+tqdm==4.70.0
+typing_extensions==4.16.0
+zipp==4.1.1

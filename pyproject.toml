@@ -1,0 +1,18 @@
+[project]
+name = "saccadero-open"
+version = "1.0.0"
+description = "A robot program for the LIBERO-Pro2.0 simulation benchmark, with the records of two registered runs"
+readme = "README.md"
+license = { file = "LICENSE" }
+authors = [{ name = "Rowant Labs" }]
+requires-python = "==3.11.*"
+# No dependencies are declared here on purpose. The code runs in two environments with exact pins
+# (requirements/worker.txt and requirements/server.txt), built by scripts/setup_env.sh, and it is used from this
+# folder (the scripts put it on the path); it is not meant to be installed.
+
+[tool.pytest.ini_options]
+testpaths = ["rowant_lab/libero_env/tests"]
+addopts = "-p no:cacheprovider"
+
+[tool.ruff]
+line-length = 120

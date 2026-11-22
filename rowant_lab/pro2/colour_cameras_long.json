@@ -1,0 +1,142 @@
+{
+ "note": "Agentview camera of each long-suite table (the cell keys of long_paths.CELLS), measured on 2026-11-15 from the simulator on BASE tasks, as colour_cameras.json's were: the cell's seen training tasks (Pro2.0's BASE files) and the plain version of its benchmark test task (the simulator's own base file); 'measured' lists them. Camera constants fixed at development; cases that change the camera (S15, S16, D07) are not covered by them.",
+ "cameras": {
+  "libero_long_kitchen": {
+   "fovy_deg": 45.0,
+   "T_world_from_camera": [
+    [
+     -7.268184498698815e-08,
+     0.6282664504107425,
+     -0.7779982437565529,
+     0.6586131746834771
+    ],
+    [
+     0.9999999999999858,
+     -7.268184498698815e-08,
+     -1.521152659944569e-07,
+     0.0
+    ],
+    [
+     -1.521152659944569e-07,
+     -0.7779982437565529,
+     -0.6282664504107283,
+     1.6103500240372424
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ]
+  },
+  "libero_long_living_room": {
+   "fovy_deg": 45.0,
+   "T_world_from_camera": [
+    [
+     -1.7233905013069872e-06,
+     0.5287697435529835,
+     -0.8487653140297038,
+     0.6065773716836134
+    ],
+    [
+     0.9999999999985034,
+     7.823149652530503e-07,
+     -1.5430955956352577e-06,
+     0.0
+    ],
+    [
+     -1.5194045527300304e-07,
+     -0.848765314031093,
+     -0.5287697435535403,
+     0.96
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ]
+  },
+  "libero_long_study": {
+   "fovy_deg": 45.0,
+   "T_world_from_camera": [
+    [
+     -7.268184498698815e-08,
+     0.6282664504107425,
+     -0.7779982437565529,
+     0.4586131746834771
+    ],
+    [
+     0.9999999999999858,
+     -7.268184498698815e-08,
+     -1.521152659944569e-07,
+     0.0
+    ],
+    [
+     -1.521152659944569e-07,
+     -0.7779982437565529,
+     -0.6282664504107283,
+     1.6103500240372424
+    ],
+    [
+     0.0,
+     0.0,
+     0.0,
+     1.0
+    ]
+   ]
+  }
+ },
+ "measured": {
+  "libero_long_kitchen": {
+   "training_tasks": [
+    2,
+    3
+   ],
+   "plain_test_tasks": [
+    8
+   ],
+   "state": 0,
+   "seed": 142,
+   "spread": {
+    "pos_m": 0.0,
+    "rot_deg": 0.0,
+    "fovy_deg": 0.0
+   },
+   "mujoco": "3.3.2"
+  },
+  "libero_long_living_room": {
+   "training_tasks": [
+    0,
+    1,
+    4,
+    6
+   ],
+   "plain_test_tasks": [],
+   "state": 0,
+   "seed": 142,
+   "spread": {
+    "pos_m": 0.0,
+    "rot_deg": 1.2074182697257333e-06,
+    "fovy_deg": 0.0
+   },
+   "mujoco": "3.3.2"
+  },
+  "libero_long_study": {
+   "training_tasks": [],
+   "plain_test_tasks": [
+    5
+   ],
+   "state": 0,
+   "seed": 142,
+   "spread": {
+    "pos_m": 0.0,
+    "rot_deg": 0.0,
+    "fovy_deg": 0.0
+   },
+   "mujoco": "3.3.2"
+  }
+ }
+}

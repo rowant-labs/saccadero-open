@@ -1,0 +1,7 @@
+{
+ "plan": "the test plan of both scored runs: every held-out instance, seeds 142 to 171, start state 0",
+ "episodes": 10170,
+ "instances": 339,
+ "plan_keys_sha256": "ed5f2fcd0d9c3dd029ef9725de53f73be31a99d40d0bc1bc7b658789a2bcb832",
+ "how": "sha256 of the JSON list (separators ',' ':') of [suite, task, case, state, seed, max_steps], sorted"
+}

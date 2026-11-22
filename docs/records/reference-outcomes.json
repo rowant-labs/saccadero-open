@@ -1,0 +1,5035 @@
+{
+"what": "outcomes we recorded for the practice list and for the eight plain test tasks, for comparison with a fresh run",
+"read_this_first": "A fresh run lands close to these, not on them: outcomes differ by GPU type and by host processor, and between two runs of one configuration on one machine in about one episode in a hundred. Development runs, not scored runs.",
+"practice": {
+"v9": {
+"machine": "a rented GPU pod, 2026-11-19",
+"solved": 411,
+"of": 476
+},
+"v11": {
+"machine": "another rented GPU pod, 2026-11-20",
+"solved": 421,
+"of": 476
+},
+"episodes": {
+"libero_10|0|D01|0|170": {
+"v9": [
+true,
+297
+],
+"v11": [
+true,
+314
+]
+},
+"libero_10|0|D03|0|170": {
+"v9": [
+false,
+520
+],
+"v11": [
+true,
+355
+]
+},
+"libero_10|0|D05|0|170": {
+"v9": [
+false,
+520
+],
+"v11": [
+false,
+520
+]
+},
+"libero_10|0|D07|0|170": {
+"v9": [
+true,
+298
+],
+"v11": [
+true,
+406
+]
+},
+"libero_10|0|D09|0|170": {
+"v9": [
+true,
+229
+],
+"v11": [
+true,
+237
+]
+},
+"libero_10|0|D11|0|170": {
+"v9": [
+true,
+236
+],
+"v11": [
+true,
+228
+]
+},
+"libero_10|0|D13|0|170": {
+"v9": [
+true,
+463
+],
+"v11": [
+true,
+456
+]
+},
+"libero_10|0|D15|0|170": {
+"v9": [
+true,
+233
+],
+"v11": [
+true,
+233
+]
+},
+"libero_10|0|D17|0|170": {
+"v9": [
+false,
+520
+],
+"v11": [
+false,
+520
+]
+},
+"libero_10|0|D20|0|170": {
+"v9": [
+true,
+210
+],
+"v11": [
+true,
+207
+]
+},
+"libero_10|0|S01|0|170": {
+"v9": [
+true,
+238
+],
+"v11": [
+true,
+212
+]
+},
+"libero_10|0|S03|0|170": {
+"v9": [
+false,
+520
+],
+"v11": [
+false,
+520
+]
+},
+"libero_10|0|S05|0|170": {
+"v9": [
+false,
+520
+],
+"v11": [
+true,
+287
+]
+},
+"libero_10|0|S08|0|170": {
+"v9": [
+true,
+216
+],
+"v11": [
+true,
+215
+]
+},
+"libero_10|0|S10|0|170": {
+"v9": [
+true,
+233
+],
+"v11": [
+true,
+233
+]
+},
+"libero_10|0|S12|0|170": {
+"v9": [
+false,
+520
+],
+"v11": [
+false,
+520
+]
+},
+"libero_10|0|S14|0|170": {
+"v9": [
+false,
+520
+],
+"v11": [
+false,
+520
+]
+},
+"libero_10|0|S16|0|170": {
+"v9": [
+true,
+234
+],
+"v11": [
+true,
+247
+]
+},
+"libero_10|0|S18|0|170": {
+"v9": [
+true,
+239
+],
+"v11": [
+true,
+264
+]
+},
+"libero_10|0|S20|0|170": {
+"v9": [
+false,
+520
+],
+"v11": [
+false,
+520
+]
+},
+"libero_10|0|S22|0|170": {
+"v9": [
+true,
+241
+],
+"v11": [
+true,
+268
+]
+},
+"libero_10|1|D01|0|170": {
+"v9": [
+true,
+300
+],
+"v11": [
+true,
+300
+]
+},
+"libero_10|1|D03|0|170": {
+"v9": [
+true,
+239
+],
+"v11": [
+true,
+239
+]
+},
+"libero_10|1|D05|0|170": {
+"v9": [
+false,
+520
+],
+"v11": [
+false,
+520
+]
+},
+"libero_10|1|D07|0|170": {
+"v9": [
+true,
+257
+],
+"v11": [
+true,
+259
+]
+},
+"libero_10|1|D09|0|170": {
+"v9": [
+true,
+236
+],
+"v11": [
+true,
+241
+]
+},
+"libero_10|1|D11|0|170": {
+"v9": [
+true,
+259
+],
+"v11": [
+true,
+260
+]
+},
+"libero_10|1|D13|0|170": {
+"v9": [
+true,
+290
+],
+"v11": [
+true,
+290
+]
+},
+"libero_10|1|D15|0|170": {
+"v9": [
+true,
+261
+],
+"v11": [
+true,
+256
+]
+},
+"libero_10|1|D17|0|170": {
+"v9": [
+true,
+266
+],
+"v11": [
+true,
+262
+]
+},
+"libero_10|1|D20|0|170": {
+"v9": [
+true,
+243
+],
+"v11": [
+true,
+238
+]
+},
+"libero_10|1|S01|0|170": {
+"v9": [
+true,
+231
+],
+"v11": [
+true,
+231
+]
+},
+"libero_10|1|S03|0|170": {
+"v9": [
+true,
+283
+],
+"v11": [
+true,
+282
+]
+},
+"libero_10|1|S05|0|170": {
+"v9": [
+false,
+520
+],
+"v11": [
+false,
+520
+]
+},
+"libero_10|1|S08|0|170": {
+"v9": [
+true,
+231
+],
+"v11": [
+true,
+231
+]
+},
+"libero_10|1|S10|0|170": {
+"v9": [
+true,
+236
+],
+"v11": [
+true,
+231
+]
+},
+"libero_10|1|S12|0|170": {
+"v9": [
+true,
+386
+],
+"v11": [
+true,
+398
+]
+},
+"libero_10|1|S14|0|170": {
+"v9": [
+false,
+520
+],
+"v11": [
+true,
+235
+]
+},
+"libero_10|1|S16|0|170": {
+"v9": [
+true,
+319
+],
+"v11": [
+true,
+337
+]
+},
+"libero_10|1|S18|0|170": {
+"v9": [
+true,
+243
+],
+"v11": [
+true,
+260
+]
+},
+"libero_10|1|S20|0|170": {
+"v9": [
+true,
+367
+],
+"v11": [
+true,
+367
+]
+},
+"libero_10|1|S22|0|170": {
+"v9": [
+true,
+237
+],
+"v11": [
+true,
+237
+]
+},
+"libero_goal|0|D01|0|170": {
+"v9": [
+false,
+300
+],
+"v11": [
+false,
+300
+]
+},
+"libero_goal|0|D06|0|170": {
+"v9": [
+true,
+64
+],
+"v11": [
+true,
+64
+]
+},
+"libero_goal|0|D08|0|170": {
+"v9": [
+true,
+64
+],
+"v11": [
+true,
+64
+]
+},
+"libero_goal|0|D10|0|170": {
+"v9": [
+true,
+64
+],
+"v11": [
+true,
+64
+]
+},
+"libero_goal|0|D12|0|170": {
+"v9": [
+true,
+77
+],
+"v11": [
+true,
+77
+]
+},
+"libero_goal|0|D14|0|170": {
+"v9": [
+true,
+64
+],
+"v11": [
+true,
+64
+]
+},
+"libero_goal|0|D16|0|170": {
+"v9": [
+true,
+64
+],
+"v11": [
+true,
+64
+]
+},
+"libero_goal|0|D21|0|170": {
+"v9": [
+true,
+64
+],
+"v11": [
+true,
+64
+]
+},
+"libero_goal|0|S03|0|170": {
+"v9": [
+true,
+61
+],
+"v11": [
+true,
+61
+]
+},
+"libero_goal|0|S07|0|170": {
+"v9": [
+false,
+300
+],
+"v11": [
+false,
+300
+]
+},
+"libero_goal|0|S09|0|170": {
+"v9": [
+false,
+300
+],
+"v11": [
+false,
+300
+]
+},
+"libero_goal|0|S11|0|170": {
+"v9": [
+true,
+65
+],
+"v11": [
+true,
+65
+]
+},
+"libero_goal|0|S13|0|170": {
+"v9": [
+true,
+64
+],
+"v11": [
+true,
+64
+]
+},
+"libero_goal|0|S15|0|170": {
+"v9": [
+false,
+300
+],
+"v11": [
+false,
+300
+]
+},
+"libero_goal|0|S17|0|170": {
+"v9": [
+true,
+65
+],
+"v11": [
+true,
+65
+]
+},
+"libero_goal|0|S19|0|170": {
+"v9": [
+true,
+65
+],
+"v11": [
+true,
+65
+]
+},
+"libero_goal|0|S21|0|170": {
+"v9": [
+true,
+64
+],
+"v11": [
+true,
+64
+]
+},
+"libero_goal|1|BASE|0|170": {
+"v9": [
+true,
+70
+],
+"v11": [
+true,
+70
+]
+},
+"libero_goal|1|D02|0|170": {
+"v9": [
+true,
+115
+],
+"v11": [
+true,
+102
+]
+},
+"libero_goal|1|D04|0|170": {
+"v9": [
+true,
+74
+],
+"v11": [
+true,
+74
+]
+},
+"libero_goal|1|D06|0|170": {
+"v9": [
+true,
+90
+],
+"v11": [
+true,
+90
+]
+},
+"libero_goal|1|D08|0|170": {
+"v9": [
+true,
+89
+],
+"v11": [
+true,
+89
+]
+},
+"libero_goal|1|D10|0|170": {
+"v9": [
+true,
+94
+],
+"v11": [
+true,
+94
+]
+},
+"libero_goal|1|D12|0|170": {
+"v9": [
+true,
+126
+],
+"v11": [
+true,
+126
+]
+},
+"libero_goal|1|D14|0|170": {
+"v9": [
+true,
+158
+],
+"v11": [
+true,
+158
+]
+},
+"libero_goal|1|D16|0|170": {
+"v9": [
+true,
+85
+],
+"v11": [
+true,
+85
+]
+},
+"libero_goal|1|D18|0|170": {
+"v9": [
+true,
+149
+],
+"v11": [
+true,
+149
+]
+},
+"libero_goal|1|D21|0|170": {
+"v9": [
+true,
+90
+],
+"v11": [
+true,
+90
+]
+},
+"libero_goal|1|S02|0|170": {
+"v9": [
+true,
+75
+],
+"v11": [
+true,
+80
+]
+},
+"libero_goal|1|S04|0|170": {
+"v9": [
+true,
+74
+],
+"v11": [
+true,
+74
+]
+},
+"libero_goal|1|S07|0|170": {
+"v9": [
+true,
+89
+],
+"v11": [
+true,
+89
+]
+},
+"libero_goal|1|S09|0|170": {
+"v9": [
+true,
+70
+],
+"v11": [
+true,
+73
+]
+},
+"libero_goal|1|S11|0|170": {
+"v9": [
+true,
+85
+],
+"v11": [
+true,
+85
+]
+},
+"libero_goal|1|S13|0|170": {
+"v9": [
+true,
+92
+],
+"v11": [
+true,
+92
+]
+},
+"libero_goal|1|S15|0|170": {
+"v9": [
+true,
+80
+],
+"v11": [
+true,
+90
+]
+},
+"libero_goal|1|S17|0|170": {
+"v9": [
+true,
+209
+],
+"v11": [
+true,
+90
+]
+},
+"libero_goal|1|S19|0|170": {
+"v9": [
+true,
+90
+],
+"v11": [
+true,
+90
+]
+},
+"libero_goal|1|S21|0|170": {
+"v9": [
+true,
+77
+],
+"v11": [
+true,
+77
+]
+},
+"libero_goal|2|BASE|0|170": {
+"v9": [
+true,
+94
+],
+"v11": [
+true,
+94
+]
+},
+"libero_goal|2|D02|0|170": {
+"v9": [
+false,
+300
+],
+"v11": [
+false,
+300
+]
+},
+"libero_goal|2|D04|0|170": {
+"v9": [
+true,
+94
+],
+"v11": [
+true,
+94
+]
+},
+"libero_goal|2|D06|0|170": {
+"v9": [
+true,
+94
+],
+"v11": [
+true,
+94
+]
+},
+"libero_goal|2|D08|0|170": {
+"v9": [
+true,
+93
+],
+"v11": [
+true,
+93
+]
+},
+"libero_goal|2|D10|0|170": {
+"v9": [
+true,
+94
+],
+"v11": [
+true,
+79
+]
+},
+"libero_goal|2|D12|0|170": {
+"v9": [
+true,
+150
+],
+"v11": [
+true,
+150
+]
+},
+"libero_goal|2|D14|0|170": {
+"v9": [
+false,
+300
+],
+"v11": [
+false,
+300
+]
+},
+"libero_goal|2|D16|0|170": {
+"v9": [
+true,
+99
+],
+"v11": [
+true,
+99
+]
+},
+"libero_goal|2|D18|0|170": {
+"v9": [
+true,
+155
+],
+"v11": [
+true,
+174
+]
+},
+"libero_goal|2|D21|0|170": {
+"v9": [
+true,
+93
+],
+"v11": [
+true,
+93
+]
+},
+"libero_goal|2|S02|0|170": {
+"v9": [
+true,
+102
+],
+"v11": [
+true,
+102
+]
+},
+"libero_goal|2|S04|0|170": {
+"v9": [
+false,
+300
+],
+"v11": [
+true,
+199
+]
+},
+"libero_goal|2|S07|0|170": {
+"v9": [
+true,
+91
+],
+"v11": [
+true,
+91
+]
+},
+"libero_goal|2|S09|0|170": {
+"v9": [
+true,
+94
+],
+"v11": [
+true,
+94
+]
+},
+"libero_goal|2|S11|0|170": {
+"v9": [
+true,
+96
+],
+"v11": [
+true,
+96
+]
+},
+"libero_goal|2|S13|0|170": {
+"v9": [
+true,
+79
+],
+"v11": [
+true,
+79
+]
+},
+"libero_goal|2|S15|0|170": {
+"v9": [
+false,
+300
+],
+"v11": [
+false,
+300
+]
+},
+"libero_goal|2|S17|0|170": {
+"v9": [
+true,
+87
+],
+"v11": [
+true,
+87
+]
+},
+"libero_goal|2|S19|0|170": {
+"v9": [
+true,
+79
+],
+"v11": [
+true,
+79
+]
+},
+"libero_goal|2|S21|0|170": {
+"v9": [
+true,
+94
+],
+"v11": [
+true,
+94
+]
+},
+"libero_goal|4|BASE|0|170": {
+"v9": [
+true,
+91
+],
+"v11": [
+true,
+95
+]
+},
+"libero_goal|4|D02|0|170": {
+"v9": [
+true,
+115
+],
+"v11": [
+true,
+115
+]
+},
+"libero_goal|4|D04|0|170": {
+"v9": [
+true,
+90
+],
+"v11": [
+true,
+90
+]
+},
+"libero_goal|4|D06|0|170": {
+"v9": [
+true,
+90
+],
+"v11": [
+true,
+90
+]
+},
+"libero_goal|4|D08|0|170": {
+"v9": [
+true,
+94
+],
+"v11": [
+true,
+94
+]
+},
+"libero_goal|4|D10|0|170": {
+"v9": [
+true,
+91
+],
+"v11": [
+true,
+91
+]
+},
+"libero_goal|4|D12|0|170": {
+"v9": [
+true,
+117
+],
+"v11": [
+true,
+117
+]
+},
+"libero_goal|4|D14|0|170": {
+"v9": [
+true,
+187
+],
+"v11": [
+true,
+187
+]
+},
+"libero_goal|4|D16|0|170": {
+"v9": [
+true,
+95
+],
+"v11": [
+true,
+111
+]
+},
+"libero_goal|4|D18|0|170": {
+"v9": [
+true,
+151
+],
+"v11": [
+true,
+151
+]
+},
+"libero_goal|4|D21|0|170": {
+"v9": [
+true,
+102
+],
+"v11": [
+true,
+102
+]
+},
+"libero_goal|4|S02|0|170": {
+"v9": [
+true,
+97
+],
+"v11": [
+true,
+97
+]
+},
+"libero_goal|4|S04|0|170": {
+"v9": [
+true,
+94
+],
+"v11": [
+true,
+94
+]
+},
+"libero_goal|4|S07|0|170": {
+"v9": [
+true,
+116
+],
+"v11": [
+true,
+116
+]
+},
+"libero_goal|4|S09|0|170": {
+"v9": [
+true,
+108
+],
+"v11": [
+true,
+108
+]
+},
+"libero_goal|4|S11|0|170": {
+"v9": [
+true,
+97
+],
+"v11": [
+true,
+97
+]
+},
+"libero_goal|4|S13|0|170": {
+"v9": [
+true,
+88
+],
+"v11": [
+true,
+88
+]
+},
+"libero_goal|4|S15|0|170": {
+"v9": [
+false,
+300
+],
+"v11": [
+false,
+300
+]
+},
+"libero_goal|4|S17|0|170": {
+"v9": [
+true,
+113
+],
+"v11": [
+true,
+113
+]
+},
+"libero_goal|4|S19|0|170": {
+"v9": [
+true,
+110
+],
+"v11": [
+true,
+110
+]
+},
+"libero_goal|4|S21|0|170": {
+"v9": [
+true,
+94
+],
+"v11": [
+true,
+94
+]
+},
+"libero_goal|8|BASE|0|170": {
+"v9": [
+true,
+70
+],
+"v11": [
+true,
+70
+]
+},
+"libero_goal|8|D02|0|170": {
+"v9": [
+true,
+82
+],
+"v11": [
+true,
+82
+]
+},
+"libero_goal|8|D04|0|170": {
+"v9": [
+true,
+95
+],
+"v11": [
+true,
+95
+]
+},
+"libero_goal|8|D06|0|170": {
+"v9": [
+true,
+69
+],
+"v11": [
+true,
+69
+]
+},
+"libero_goal|8|D08|0|170": {
+"v9": [
+true,
+70
+],
+"v11": [
+true,
+70
+]
+},
+"libero_goal|8|D10|0|170": {
+"v9": [
+true,
+94
+],
+"v11": [
+true,
+94
+]
+},
+"libero_goal|8|D12|0|170": {
+"v9": [
+true,
+111
+],
+"v11": [
+true,
+111
+]
+},
+"libero_goal|8|D14|0|170": {
+"v9": [
+true,
+175
+],
+"v11": [
+true,
+175
+]
+},
+"libero_goal|8|D16|0|170": {
+"v9": [
+true,
+88
+],
+"v11": [
+true,
+87
+]
+},
+"libero_goal|8|D18|0|170": {
+"v9": [
+true,
+139
+],
+"v11": [
+true,
+125
+]
+},
+"libero_goal|8|D21|0|170": {
+"v9": [
+true,
+70
+],
+"v11": [
+true,
+70
+]
+},
+"libero_goal|8|S02|0|170": {
+"v9": [
+true,
+101
+],
+"v11": [
+true,
+101
+]
+},
+"libero_goal|8|S04|0|170": {
+"v9": [
+true,
+79
+],
+"v11": [
+true,
+79
+]
+},
+"libero_goal|8|S07|0|170": {
+"v9": [
+true,
+70
+],
+"v11": [
+true,
+70
+]
+},
+"libero_goal|8|S09|0|170": {
+"v9": [
+true,
+136
+],
+"v11": [
+true,
+154
+]
+},
+"libero_goal|8|S11|0|170": {
+"v9": [
+true,
+71
+],
+"v11": [
+true,
+71
+]
+},
+"libero_goal|8|S13|0|170": {
+"v9": [
+true,
+70
+],
+"v11": [
+true,
+70
+]
+},
+"libero_goal|8|S15|0|170": {
+"v9": [
+true,
+79
+],
+"v11": [
+true,
+102
+]
+},
+"libero_goal|8|S17|0|170": {
+"v9": [
+true,
+76
+],
+"v11": [
+true,
+76
+]
+},
+"libero_goal|8|S19|0|170": {
+"v9": [
+true,
+68
+],
+"v11": [
+true,
+68
+]
+},
+"libero_goal|8|S21|0|170": {
+"v9": [
+true,
+71
+],
+"v11": [
+true,
+71
+]
+},
+"libero_goal|9|BASE|0|170": {
+"v9": [
+true,
+91
+],
+"v11": [
+true,
+91
+]
+},
+"libero_goal|9|D02|0|170": {
+"v9": [
+true,
+96
+],
+"v11": [
+true,
+96
+]
+},
+"libero_goal|9|D05|0|170": {
+"v9": [
+false,
+300
+],
+"v11": [
+false,
+300
+]
+},
+"libero_goal|9|D07|0|170": {
+"v9": [
+true,
+93
+],
+"v11": [
+true,
+116
+]
+},
+"libero_goal|9|D09|0|170": {
+"v9": [
+true,
+92
+],
+"v11": [
+true,
+92
+]
+},
+"libero_goal|9|D11|0|170": {
+"v9": [
+true,
+93
+],
+"v11": [
+true,
+90
+]
+},
+"libero_goal|9|D13|0|170": {
+"v9": [
+true,
+189
+],
+"v11": [
+true,
+189
+]
+},
+"libero_goal|9|D15|0|170": {
+"v9": [
+true,
+205
+],
+"v11": [
+true,
+182
+]
+},
+"libero_goal|9|D17|0|170": {
+"v9": [
+true,
+93
+],
+"v11": [
+true,
+93
+]
+},
+"libero_goal|9|D20|0|170": {
+"v9": [
+true,
+94
+],
+"v11": [
+true,
+94
+]
+},
+"libero_goal|9|S01|0|170": {
+"v9": [
+false,
+300
+],
+"v11": [
+false,
+300
+]
+},
+"libero_goal|9|S03|0|170": {
+"v9": [
+true,
+77
+],
+"v11": [
+true,
+77
+]
+},
+"libero_goal|9|S05|0|170": {
+"v9": [
+false,
+300
+],
+"v11": [
+false,
+300
+]
+},
+"libero_goal|9|S08|0|170": {
+"v9": [
+false,
+300
+],
+"v11": [
+false,
+300
+]
+},
+"libero_goal|9|S10|0|170": {
+"v9": [
+true,
+117
+],
+"v11": [
+true,
+117
+]
+},
+"libero_goal|9|S12|0|170": {
+"v9": [
+true,
+107
+],
+"v11": [
+true,
+107
+]
+},
+"libero_goal|9|S14|0|170": {
+"v9": [
+true,
+88
+],
+"v11": [
+true,
+88
+]
+},
+"libero_goal|9|S16|0|170": {
+"v9": [
+true,
+154
+],
+"v11": [
+true,
+131
+]
+},
+"libero_goal|9|S18|0|170": {
+"v9": [
+true,
+110
+],
+"v11": [
+true,
+110
+]
+},
+"libero_goal|9|S20|0|170": {
+"v9": [
+true,
+163
+],
+"v11": [
+true,
+163
+]
+},
+"libero_goal|9|S22|0|170": {
+"v9": [
+true,
+89
+],
+"v11": [
+true,
+89
+]
+},
+"libero_object|0|D01|0|170": {
+"v9": [
+true,
+143
+],
+"v11": [
+true,
+143
+]
+},
+"libero_object|0|D03|0|170": {
+"v9": [
+true,
+187
+],
+"v11": [
+true,
+187
+]
+},
+"libero_object|0|D05|0|170": {
+"v9": [
+false,
+280
+],
+"v11": [
+true,
+143
+]
+},
+"libero_object|0|D07|0|170": {
+"v9": [
+true,
+96
+],
+"v11": [
+true,
+96
+]
+},
+"libero_object|0|D09|0|170": {
+"v9": [
+true,
+96
+],
+"v11": [
+true,
+96
+]
+},
+"libero_object|0|D11|0|170": {
+"v9": [
+true,
+122
+],
+"v11": [
+true,
+122
+]
+},
+"libero_object|0|D13|0|170": {
+"v9": [
+true,
+147
+],
+"v11": [
+true,
+147
+]
+},
+"libero_object|0|D15|0|170": {
+"v9": [
+true,
+121
+],
+"v11": [
+true,
+121
+]
+},
+"libero_object|0|D17|0|170": {
+"v9": [
+true,
+177
+],
+"v11": [
+true,
+177
+]
+},
+"libero_object|0|D20|0|170": {
+"v9": [
+true,
+99
+],
+"v11": [
+true,
+99
+]
+},
+"libero_object|0|S01|0|170": {
+"v9": [
+true,
+90
+],
+"v11": [
+true,
+90
+]
+},
+"libero_object|0|S03|0|170": {
+"v9": [
+true,
+98
+],
+"v11": [
+true,
+98
+]
+},
+"libero_object|0|S05|0|170": {
+"v9": [
+true,
+128
+],
+"v11": [
+true,
+147
+]
+},
+"libero_object|0|S08|0|170": {
+"v9": [
+true,
+94
+],
+"v11": [
+true,
+100
+]
+},
+"libero_object|0|S10|0|170": {
+"v9": [
+true,
+95
+],
+"v11": [
+true,
+95
+]
+},
+"libero_object|0|S12|0|170": {
+"v9": [
+true,
+120
+],
+"v11": [
+true,
+120
+]
+},
+"libero_object|0|S14|0|170": {
+"v9": [
+false,
+280
+],
+"v11": [
+false,
+280
+]
+},
+"libero_object|0|S16|0|170": {
+"v9": [
+false,
+280
+],
+"v11": [
+true,
+121
+]
+},
+"libero_object|0|S18|0|170": {
+"v9": [
+true,
+122
+],
+"v11": [
+true,
+128
+]
+},
+"libero_object|0|S20|0|170": {
+"v9": [
+true,
+222
+],
+"v11": [
+true,
+222
+]
+},
+"libero_object|0|S22|0|170": {
+"v9": [
+true,
+98
+],
+"v11": [
+true,
+98
+]
+},
+"libero_object|2|D01|0|170": {
+"v9": [
+true,
+140
+],
+"v11": [
+true,
+140
+]
+},
+"libero_object|2|D03|0|170": {
+"v9": [
+false,
+280
+],
+"v11": [
+false,
+280
+]
+},
+"libero_object|2|D05|0|170": {
+"v9": [
+true,
+138
+],
+"v11": [
+true,
+113
+]
+},
+"libero_object|2|D07|0|170": {
+"v9": [
+true,
+90
+],
+"v11": [
+true,
+89
+]
+},
+"libero_object|2|D09|0|170": {
+"v9": [
+true,
+90
+],
+"v11": [
+true,
+90
+]
+},
+"libero_object|2|D11|0|170": {
+"v9": [
+true,
+114
+],
+"v11": [
+true,
+114
+]
+},
+"libero_object|2|D13|0|170": {
+"v9": [
+true,
+137
+],
+"v11": [
+true,
+137
+]
+},
+"libero_object|2|D15|0|170": {
+"v9": [
+true,
+114
+],
+"v11": [
+true,
+114
+]
+},
+"libero_object|2|D17|0|170": {
+"v9": [
+true,
+166
+],
+"v11": [
+true,
+166
+]
+},
+"libero_object|2|D20|0|170": {
+"v9": [
+true,
+95
+],
+"v11": [
+true,
+95
+]
+},
+"libero_object|2|S01|0|170": {
+"v9": [
+true,
+104
+],
+"v11": [
+true,
+104
+]
+},
+"libero_object|2|S03|0|170": {
+"v9": [
+true,
+92
+],
+"v11": [
+true,
+92
+]
+},
+"libero_object|2|S05|0|170": {
+"v9": [
+true,
+117
+],
+"v11": [
+true,
+132
+]
+},
+"libero_object|2|S08|0|170": {
+"v9": [
+true,
+96
+],
+"v11": [
+true,
+96
+]
+},
+"libero_object|2|S10|0|170": {
+"v9": [
+true,
+101
+],
+"v11": [
+true,
+101
+]
+},
+"libero_object|2|S12|0|170": {
+"v9": [
+true,
+113
+],
+"v11": [
+true,
+113
+]
+},
+"libero_object|2|S14|0|170": {
+"v9": [
+true,
+91
+],
+"v11": [
+true,
+109
+]
+},
+"libero_object|2|S16|0|170": {
+"v9": [
+true,
+104
+],
+"v11": [
+true,
+104
+]
+},
+"libero_object|2|S18|0|170": {
+"v9": [
+true,
+105
+],
+"v11": [
+true,
+116
+]
+},
+"libero_object|2|S20|0|170": {
+"v9": [
+true,
+176
+],
+"v11": [
+true,
+176
+]
+},
+"libero_object|2|S22|0|170": {
+"v9": [
+true,
+96
+],
+"v11": [
+true,
+96
+]
+},
+"libero_object|3|D01|0|170": {
+"v9": [
+true,
+143
+],
+"v11": [
+true,
+143
+]
+},
+"libero_object|3|D03|0|170": {
+"v9": [
+false,
+280
+],
+"v11": [
+false,
+280
+]
+},
+"libero_object|3|D05|0|170": {
+"v9": [
+true,
+133
+],
+"v11": [
+true,
+126
+]
+},
+"libero_object|3|D07|0|170": {
+"v9": [
+true,
+87
+],
+"v11": [
+true,
+87
+]
+},
+"libero_object|3|D09|0|170": {
+"v9": [
+true,
+86
+],
+"v11": [
+true,
+86
+]
+},
+"libero_object|3|D11|0|170": {
+"v9": [
+true,
+112
+],
+"v11": [
+true,
+112
+]
+},
+"libero_object|3|D13|0|170": {
+"v9": [
+true,
+133
+],
+"v11": [
+true,
+133
+]
+},
+"libero_object|3|D15|0|170": {
+"v9": [
+true,
+110
+],
+"v11": [
+true,
+110
+]
+},
+"libero_object|3|D17|0|170": {
+"v9": [
+true,
+129
+],
+"v11": [
+true,
+129
+]
+},
+"libero_object|3|D20|0|170": {
+"v9": [
+true,
+89
+],
+"v11": [
+true,
+89
+]
+},
+"libero_object|3|S01|0|170": {
+"v9": [
+true,
+97
+],
+"v11": [
+true,
+97
+]
+},
+"libero_object|3|S03|0|170": {
+"v9": [
+true,
+88
+],
+"v11": [
+true,
+88
+]
+},
+"libero_object|3|S05|0|170": {
+"v9": [
+true,
+123
+],
+"v11": [
+true,
+137
+]
+},
+"libero_object|3|S08|0|170": {
+"v9": [
+true,
+115
+],
+"v11": [
+true,
+115
+]
+},
+"libero_object|3|S10|0|170": {
+"v9": [
+true,
+86
+],
+"v11": [
+true,
+86
+]
+},
+"libero_object|3|S12|0|170": {
+"v9": [
+true,
+106
+],
+"v11": [
+true,
+106
+]
+},
+"libero_object|3|S14|0|170": {
+"v9": [
+true,
+85
+],
+"v11": [
+true,
+166
+]
+},
+"libero_object|3|S16|0|170": {
+"v9": [
+true,
+97
+],
+"v11": [
+true,
+117
+]
+},
+"libero_object|3|S18|0|170": {
+"v9": [
+true,
+92
+],
+"v11": [
+true,
+115
+]
+},
+"libero_object|3|S20|0|170": {
+"v9": [
+true,
+171
+],
+"v11": [
+true,
+171
+]
+},
+"libero_object|3|S22|0|170": {
+"v9": [
+true,
+86
+],
+"v11": [
+true,
+86
+]
+},
+"libero_object|4|D01|0|170": {
+"v9": [
+true,
+155
+],
+"v11": [
+true,
+155
+]
+},
+"libero_object|4|D03|0|170": {
+"v9": [
+true,
+172
+],
+"v11": [
+true,
+172
+]
+},
+"libero_object|4|D05|0|170": {
+"v9": [
+false,
+280
+],
+"v11": [
+true,
+124
+]
+},
+"libero_object|4|D07|0|170": {
+"v9": [
+true,
+105
+],
+"v11": [
+true,
+105
+]
+},
+"libero_object|4|D09|0|170": {
+"v9": [
+true,
+103
+],
+"v11": [
+true,
+103
+]
+},
+"libero_object|4|D11|0|170": {
+"v9": [
+true,
+128
+],
+"v11": [
+true,
+128
+]
+},
+"libero_object|4|D13|0|170": {
+"v9": [
+true,
+200
+],
+"v11": [
+true,
+200
+]
+},
+"libero_object|4|D15|0|170": {
+"v9": [
+true,
+130
+],
+"v11": [
+true,
+130
+]
+},
+"libero_object|4|D17|0|170": {
+"v9": [
+true,
+149
+],
+"v11": [
+true,
+149
+]
+},
+"libero_object|4|D20|0|170": {
+"v9": [
+true,
+110
+],
+"v11": [
+true,
+110
+]
+},
+"libero_object|4|S01|0|170": {
+"v9": [
+true,
+100
+],
+"v11": [
+true,
+100
+]
+},
+"libero_object|4|S03|0|170": {
+"v9": [
+true,
+104
+],
+"v11": [
+true,
+104
+]
+},
+"libero_object|4|S05|0|170": {
+"v9": [
+true,
+131
+],
+"v11": [
+true,
+144
+]
+},
+"libero_object|4|S08|0|170": {
+"v9": [
+true,
+102
+],
+"v11": [
+true,
+124
+]
+},
+"libero_object|4|S10|0|170": {
+"v9": [
+true,
+107
+],
+"v11": [
+true,
+107
+]
+},
+"libero_object|4|S12|0|170": {
+"v9": [
+true,
+121
+],
+"v11": [
+true,
+121
+]
+},
+"libero_object|4|S14|0|170": {
+"v9": [
+false,
+280
+],
+"v11": [
+false,
+280
+]
+},
+"libero_object|4|S16|0|170": {
+"v9": [
+true,
+114
+],
+"v11": [
+true,
+140
+]
+},
+"libero_object|4|S18|0|170": {
+"v9": [
+true,
+108
+],
+"v11": [
+true,
+125
+]
+},
+"libero_object|4|S20|0|170": {
+"v9": [
+true,
+175
+],
+"v11": [
+true,
+175
+]
+},
+"libero_object|4|S22|0|170": {
+"v9": [
+true,
+102
+],
+"v11": [
+true,
+102
+]
+},
+"libero_object|5|D01|0|170": {
+"v9": [
+true,
+137
+],
+"v11": [
+true,
+137
+]
+},
+"libero_object|5|D03|0|170": {
+"v9": [
+true,
+272
+],
+"v11": [
+false,
+280
+]
+},
+"libero_object|5|D05|0|170": {
+"v9": [
+true,
+131
+],
+"v11": [
+true,
+107
+]
+},
+"libero_object|5|D07|0|170": {
+"v9": [
+true,
+87
+],
+"v11": [
+true,
+85
+]
+},
+"libero_object|5|D09|0|170": {
+"v9": [
+true,
+88
+],
+"v11": [
+true,
+88
+]
+},
+"libero_object|5|D11|0|170": {
+"v9": [
+true,
+109
+],
+"v11": [
+true,
+109
+]
+},
+"libero_object|5|D13|0|170": {
+"v9": [
+false,
+280
+],
+"v11": [
+false,
+280
+]
+},
+"libero_object|5|D15|0|170": {
+"v9": [
+true,
+114
+],
+"v11": [
+true,
+114
+]
+},
+"libero_object|5|D17|0|170": {
+"v9": [
+true,
+158
+],
+"v11": [
+true,
+158
+]
+},
+"libero_object|5|D20|0|170": {
+"v9": [
+true,
+88
+],
+"v11": [
+true,
+88
+]
+},
+"libero_object|5|S01|0|170": {
+"v9": [
+true,
+93
+],
+"v11": [
+true,
+101
+]
+},
+"libero_object|5|S03|0|170": {
+"v9": [
+true,
+88
+],
+"v11": [
+true,
+88
+]
+},
+"libero_object|5|S05|0|170": {
+"v9": [
+true,
+125
+],
+"v11": [
+true,
+150
+]
+},
+"libero_object|5|S08|0|170": {
+"v9": [
+true,
+220
+],
+"v11": [
+true,
+234
+]
+},
+"libero_object|5|S10|0|170": {
+"v9": [
+true,
+88
+],
+"v11": [
+true,
+88
+]
+},
+"libero_object|5|S12|0|170": {
+"v9": [
+true,
+153
+],
+"v11": [
+true,
+153
+]
+},
+"libero_object|5|S14|0|170": {
+"v9": [
+false,
+280
+],
+"v11": [
+false,
+280
+]
+},
+"libero_object|5|S16|0|170": {
+"v9": [
+true,
+112
+],
+"v11": [
+true,
+104
+]
+},
+"libero_object|5|S18|0|170": {
+"v9": [
+true,
+91
+],
+"v11": [
+true,
+137
+]
+},
+"libero_object|5|S20|0|170": {
+"v9": [
+true,
+182
+],
+"v11": [
+true,
+182
+]
+},
+"libero_object|5|S22|0|170": {
+"v9": [
+true,
+87
+],
+"v11": [
+true,
+87
+]
+},
+"libero_object|6|D01|0|170": {
+"v9": [
+true,
+138
+],
+"v11": [
+true,
+138
+]
+},
+"libero_object|6|D03|0|170": {
+"v9": [
+true,
+191
+],
+"v11": [
+true,
+191
+]
+},
+"libero_object|6|D05|0|170": {
+"v9": [
+true,
+153
+],
+"v11": [
+true,
+132
+]
+},
+"libero_object|6|D07|0|170": {
+"v9": [
+true,
+98
+],
+"v11": [
+true,
+98
+]
+},
+"libero_object|6|D09|0|170": {
+"v9": [
+true,
+100
+],
+"v11": [
+true,
+100
+]
+},
+"libero_object|6|D11|0|170": {
+"v9": [
+true,
+98
+],
+"v11": [
+true,
+98
+]
+},
+"libero_object|6|D13|0|170": {
+"v9": [
+true,
+212
+],
+"v11": [
+true,
+212
+]
+},
+"libero_object|6|D15|0|170": {
+"v9": [
+true,
+123
+],
+"v11": [
+true,
+123
+]
+},
+"libero_object|6|D17|0|170": {
+"v9": [
+true,
+150
+],
+"v11": [
+true,
+150
+]
+},
+"libero_object|6|D20|0|170": {
+"v9": [
+true,
+103
+],
+"v11": [
+true,
+103
+]
+},
+"libero_object|6|S01|0|170": {
+"v9": [
+true,
+92
+],
+"v11": [
+true,
+92
+]
+},
+"libero_object|6|S03|0|170": {
+"v9": [
+true,
+99
+],
+"v11": [
+true,
+99
+]
+},
+"libero_object|6|S05|0|170": {
+"v9": [
+true,
+118
+],
+"v11": [
+true,
+140
+]
+},
+"libero_object|6|S08|0|170": {
+"v9": [
+true,
+97
+],
+"v11": [
+true,
+97
+]
+},
+"libero_object|6|S10|0|170": {
+"v9": [
+true,
+99
+],
+"v11": [
+true,
+99
+]
+},
+"libero_object|6|S12|0|170": {
+"v9": [
+true,
+128
+],
+"v11": [
+true,
+128
+]
+},
+"libero_object|6|S14|0|170": {
+"v9": [
+true,
+100
+],
+"v11": [
+true,
+100
+]
+},
+"libero_object|6|S16|0|170": {
+"v9": [
+true,
+134
+],
+"v11": [
+true,
+117
+]
+},
+"libero_object|6|S18|0|170": {
+"v9": [
+true,
+148
+],
+"v11": [
+true,
+131
+]
+},
+"libero_object|6|S20|0|170": {
+"v9": [
+true,
+219
+],
+"v11": [
+true,
+201
+]
+},
+"libero_object|6|S22|0|170": {
+"v9": [
+true,
+109
+],
+"v11": [
+true,
+109
+]
+},
+"libero_object|7|D01|0|170": {
+"v9": [
+true,
+150
+],
+"v11": [
+true,
+150
+]
+},
+"libero_object|7|D03|0|170": {
+"v9": [
+true,
+238
+],
+"v11": [
+true,
+238
+]
+},
+"libero_object|7|D05|0|170": {
+"v9": [
+true,
+163
+],
+"v11": [
+true,
+133
+]
+},
+"libero_object|7|D07|0|170": {
+"v9": [
+true,
+98
+],
+"v11": [
+true,
+99
+]
+},
+"libero_object|7|D09|0|170": {
+"v9": [
+true,
+99
+],
+"v11": [
+true,
+115
+]
+},
+"libero_object|7|D11|0|170": {
+"v9": [
+true,
+123
+],
+"v11": [
+true,
+123
+]
+},
+"libero_object|7|D13|0|170": {
+"v9": [
+true,
+210
+],
+"v11": [
+true,
+210
+]
+},
+"libero_object|7|D15|0|170": {
+"v9": [
+true,
+125
+],
+"v11": [
+true,
+125
+]
+},
+"libero_object|7|D17|0|170": {
+"v9": [
+true,
+140
+],
+"v11": [
+true,
+140
+]
+},
+"libero_object|7|D20|0|170": {
+"v9": [
+true,
+102
+],
+"v11": [
+true,
+102
+]
+},
+"libero_object|7|S01|0|170": {
+"v9": [
+true,
+98
+],
+"v11": [
+true,
+98
+]
+},
+"libero_object|7|S03|0|170": {
+"v9": [
+true,
+101
+],
+"v11": [
+true,
+101
+]
+},
+"libero_object|7|S05|0|170": {
+"v9": [
+true,
+122
+],
+"v11": [
+true,
+136
+]
+},
+"libero_object|7|S08|0|170": {
+"v9": [
+true,
+101
+],
+"v11": [
+true,
+101
+]
+},
+"libero_object|7|S10|0|170": {
+"v9": [
+true,
+101
+],
+"v11": [
+true,
+101
+]
+},
+"libero_object|7|S12|0|170": {
+"v9": [
+true,
+117
+],
+"v11": [
+true,
+117
+]
+},
+"libero_object|7|S14|0|170": {
+"v9": [
+true,
+98
+],
+"v11": [
+true,
+98
+]
+},
+"libero_object|7|S16|0|170": {
+"v9": [
+true,
+123
+],
+"v11": [
+true,
+140
+]
+},
+"libero_object|7|S18|0|170": {
+"v9": [
+true,
+102
+],
+"v11": [
+true,
+125
+]
+},
+"libero_object|7|S20|0|170": {
+"v9": [
+true,
+192
+],
+"v11": [
+true,
+192
+]
+},
+"libero_object|7|S22|0|170": {
+"v9": [
+true,
+100
+],
+"v11": [
+true,
+100
+]
+},
+"libero_object|9|D01|0|170": {
+"v9": [
+true,
+133
+],
+"v11": [
+true,
+133
+]
+},
+"libero_object|9|D03|0|170": {
+"v9": [
+false,
+280
+],
+"v11": [
+false,
+280
+]
+},
+"libero_object|9|D05|0|170": {
+"v9": [
+true,
+134
+],
+"v11": [
+true,
+111
+]
+},
+"libero_object|9|D07|0|170": {
+"v9": [
+true,
+88
+],
+"v11": [
+true,
+88
+]
+},
+"libero_object|9|D09|0|170": {
+"v9": [
+true,
+88
+],
+"v11": [
+true,
+88
+]
+},
+"libero_object|9|D11|0|170": {
+"v9": [
+true,
+111
+],
+"v11": [
+true,
+111
+]
+},
+"libero_object|9|D13|0|170": {
+"v9": [
+true,
+122
+],
+"v11": [
+true,
+122
+]
+},
+"libero_object|9|D15|0|170": {
+"v9": [
+true,
+114
+],
+"v11": [
+true,
+114
+]
+},
+"libero_object|9|D17|0|170": {
+"v9": [
+true,
+130
+],
+"v11": [
+true,
+130
+]
+},
+"libero_object|9|D20|0|170": {
+"v9": [
+true,
+88
+],
+"v11": [
+true,
+88
+]
+},
+"libero_object|9|S01|0|170": {
+"v9": [
+true,
+144
+],
+"v11": [
+true,
+144
+]
+},
+"libero_object|9|S03|0|170": {
+"v9": [
+true,
+89
+],
+"v11": [
+true,
+89
+]
+},
+"libero_object|9|S05|0|170": {
+"v9": [
+true,
+126
+],
+"v11": [
+true,
+138
+]
+},
+"libero_object|9|S08|0|170": {
+"v9": [
+true,
+89
+],
+"v11": [
+true,
+89
+]
+},
+"libero_object|9|S10|0|170": {
+"v9": [
+true,
+87
+],
+"v11": [
+true,
+87
+]
+},
+"libero_object|9|S12|0|170": {
+"v9": [
+true,
+104
+],
+"v11": [
+true,
+104
+]
+},
+"libero_object|9|S14|0|170": {
+"v9": [
+true,
+86
+],
+"v11": [
+true,
+86
+]
+},
+"libero_object|9|S16|0|170": {
+"v9": [
+true,
+94
+],
+"v11": [
+true,
+93
+]
+},
+"libero_object|9|S18|0|170": {
+"v9": [
+true,
+95
+],
+"v11": [
+true,
+116
+]
+},
+"libero_object|9|S20|0|170": {
+"v9": [
+true,
+178
+],
+"v11": [
+true,
+178
+]
+},
+"libero_object|9|S22|0|170": {
+"v9": [
+true,
+90
+],
+"v11": [
+true,
+90
+]
+},
+"libero_spatial|1|D01|0|170": {
+"v9": [
+false,
+220
+],
+"v11": [
+false,
+220
+]
+},
+"libero_spatial|1|D03|0|170": {
+"v9": [
+false,
+220
+],
+"v11": [
+false,
+220
+]
+},
+"libero_spatial|1|D05|0|170": {
+"v9": [
+false,
+220
+],
+"v11": [
+true,
+115
+]
+},
+"libero_spatial|1|D07|0|170": {
+"v9": [
+true,
+95
+],
+"v11": [
+true,
+95
+]
+},
+"libero_spatial|1|D09|0|170": {
+"v9": [
+true,
+95
+],
+"v11": [
+true,
+95
+]
+},
+"libero_spatial|1|D11|0|170": {
+"v9": [
+true,
+113
+],
+"v11": [
+true,
+113
+]
+},
+"libero_spatial|1|D13|0|170": {
+"v9": [
+true,
+133
+],
+"v11": [
+true,
+133
+]
+},
+"libero_spatial|1|D15|0|170": {
+"v9": [
+true,
+120
+],
+"v11": [
+true,
+120
+]
+},
+"libero_spatial|1|D17|0|170": {
+"v9": [
+true,
+137
+],
+"v11": [
+true,
+137
+]
+},
+"libero_spatial|1|D20|0|170": {
+"v9": [
+true,
+95
+],
+"v11": [
+true,
+95
+]
+},
+"libero_spatial|1|S01|0|170": {
+"v9": [
+true,
+84
+],
+"v11": [
+true,
+107
+]
+},
+"libero_spatial|1|S03|0|170": {
+"v9": [
+true,
+95
+],
+"v11": [
+true,
+95
+]
+},
+"libero_spatial|1|S07|0|170": {
+"v9": [
+true,
+86
+],
+"v11": [
+true,
+86
+]
+},
+"libero_spatial|1|S09|0|170": {
+"v9": [
+false,
+220
+],
+"v11": [
+false,
+220
+]
+},
+"libero_spatial|1|S11|0|170": {
+"v9": [
+true,
+98
+],
+"v11": [
+true,
+98
+]
+},
+"libero_spatial|1|S13|0|170": {
+"v9": [
+true,
+86
+],
+"v11": [
+true,
+101
+]
+},
+"libero_spatial|1|S15|0|170": {
+"v9": [
+true,
+100
+],
+"v11": [
+true,
+197
+]
+},
+"libero_spatial|1|S17|0|170": {
+"v9": [
+true,
+95
+],
+"v11": [
+true,
+95
+]
+},
+"libero_spatial|1|S19|0|170": {
+"v9": [
+true,
+84
+],
+"v11": [
+true,
+93
+]
+},
+"libero_spatial|1|S21|0|170": {
+"v9": [
+true,
+95
+],
+"v11": [
+true,
+95
+]
+},
+"libero_spatial|2|BASE|0|170": {
+"v9": [
+true,
+79
+],
+"v11": [
+true,
+79
+]
+},
+"libero_spatial|2|D02|0|170": {
+"v9": [
+true,
+79
+],
+"v11": [
+true,
+79
+]
+},
+"libero_spatial|2|D04|0|170": {
+"v9": [
+true,
+78
+],
+"v11": [
+true,
+78
+]
+},
+"libero_spatial|2|D06|0|170": {
+"v9": [
+true,
+78
+],
+"v11": [
+true,
+78
+]
+},
+"libero_spatial|2|D08|0|170": {
+"v9": [
+true,
+79
+],
+"v11": [
+true,
+79
+]
+},
+"libero_spatial|2|D10|0|170": {
+"v9": [
+true,
+80
+],
+"v11": [
+true,
+80
+]
+},
+"libero_spatial|2|D12|0|170": {
+"v9": [
+true,
+105
+],
+"v11": [
+true,
+105
+]
+},
+"libero_spatial|2|D14|0|170": {
+"v9": [
+true,
+177
+],
+"v11": [
+true,
+177
+]
+},
+"libero_spatial|2|D16|0|170": {
+"v9": [
+true,
+87
+],
+"v11": [
+true,
+87
+]
+},
+"libero_spatial|2|D18|0|170": {
+"v9": [
+true,
+130
+],
+"v11": [
+true,
+127
+]
+},
+"libero_spatial|2|D21|0|170": {
+"v9": [
+true,
+74
+],
+"v11": [
+true,
+74
+]
+},
+"libero_spatial|2|S02|0|170": {
+"v9": [
+true,
+93
+],
+"v11": [
+true,
+93
+]
+},
+"libero_spatial|2|S05|0|170": {
+"v9": [
+true,
+146
+],
+"v11": [
+true,
+167
+]
+},
+"libero_spatial|2|S08|0|170": {
+"v9": [
+true,
+75
+],
+"v11": [
+false,
+220
+]
+},
+"libero_spatial|2|S10|0|170": {
+"v9": [
+true,
+99
+],
+"v11": [
+true,
+99
+]
+},
+"libero_spatial|2|S12|0|170": {
+"v9": [
+true,
+91
+],
+"v11": [
+true,
+91
+]
+},
+"libero_spatial|2|S14|0|170": {
+"v9": [
+true,
+76
+],
+"v11": [
+true,
+76
+]
+},
+"libero_spatial|2|S16|0|170": {
+"v9": [
+true,
+85
+],
+"v11": [
+true,
+147
+]
+},
+"libero_spatial|2|S18|0|170": {
+"v9": [
+true,
+98
+],
+"v11": [
+true,
+101
+]
+},
+"libero_spatial|2|S20|0|170": {
+"v9": [
+false,
+220
+],
+"v11": [
+true,
+192
+]
+},
+"libero_spatial|2|S22|0|170": {
+"v9": [
+true,
+75
+],
+"v11": [
+true,
+75
+]
+},
+"libero_spatial|3|D01|0|170": {
+"v9": [
+true,
+146
+],
+"v11": [
+true,
+146
+]
+},
+"libero_spatial|3|D03|0|170": {
+"v9": [
+false,
+220
+],
+"v11": [
+false,
+220
+]
+},
+"libero_spatial|3|D05|0|170": {
+"v9": [
+false,
+220
+],
+"v11": [
+false,
+220
+]
+},
+"libero_spatial|3|D07|0|170": {
+"v9": [
+true,
+76
+],
+"v11": [
+true,
+76
+]
+},
+"libero_spatial|3|D09|0|170": {
+"v9": [
+true,
+77
+],
+"v11": [
+true,
+77
+]
+},
+"libero_spatial|3|D11|0|170": {
+"v9": [
+true,
+79
+],
+"v11": [
+true,
+79
+]
+},
+"libero_spatial|3|D13|0|170": {
+"v9": [
+false,
+220
+],
+"v11": [
+false,
+220
+]
+},
+"libero_spatial|3|D15|0|170": {
+"v9": [
+true,
+104
+],
+"v11": [
+true,
+104
+]
+},
+"libero_spatial|3|D17|0|170": {
+"v9": [
+true,
+119
+],
+"v11": [
+true,
+119
+]
+},
+"libero_spatial|3|D20|0|170": {
+"v9": [
+true,
+78
+],
+"v11": [
+true,
+78
+]
+},
+"libero_spatial|3|S01|0|170": {
+"v9": [
+true,
+84
+],
+"v11": [
+true,
+84
+]
+},
+"libero_spatial|3|S03|0|170": {
+"v9": [
+true,
+90
+],
+"v11": [
+true,
+90
+]
+},
+"libero_spatial|3|S05|0|170": {
+"v9": [
+false,
+220
+],
+"v11": [
+false,
+220
+]
+},
+"libero_spatial|3|S08|0|170": {
+"v9": [
+false,
+220
+],
+"v11": [
+false,
+220
+]
+},
+"libero_spatial|3|S10|0|170": {
+"v9": [
+true,
+74
+],
+"v11": [
+true,
+74
+]
+},
+"libero_spatial|3|S12|0|170": {
+"v9": [
+false,
+220
+],
+"v11": [
+false,
+220
+]
+},
+"libero_spatial|3|S14|0|170": {
+"v9": [
+true,
+77
+],
+"v11": [
+true,
+77
+]
+},
+"libero_spatial|3|S16|0|170": {
+"v9": [
+true,
+80
+],
+"v11": [
+true,
+93
+]
+},
+"libero_spatial|3|S18|0|170": {
+"v9": [
+true,
+81
+],
+"v11": [
+true,
+81
+]
+},
+"libero_spatial|3|S20|0|170": {
+"v9": [
+true,
+138
+],
+"v11": [
+false,
+220
+]
+},
+"libero_spatial|3|S22|0|170": {
+"v9": [
+true,
+77
+],
+"v11": [
+true,
+77
+]
+},
+"libero_spatial|5|D01|0|170": {
+"v9": [
+true,
+130
+],
+"v11": [
+true,
+131
+]
+},
+"libero_spatial|5|D03|0|170": {
+"v9": [
+false,
+220
+],
+"v11": [
+false,
+220
+]
+},
+"libero_spatial|5|D05|0|170": {
+"v9": [
+false,
+220
+],
+"v11": [
+true,
+128
+]
+},
+"libero_spatial|5|D07|0|170": {
+"v9": [
+false,
+220
+],
+"v11": [
+true,
+86
+]
+},
+"libero_spatial|5|D09|0|170": {
+"v9": [
+true,
+88
+],
+"v11": [
+true,
+88
+]
+},
+"libero_spatial|5|D11|0|170": {
+"v9": [
+true,
+92
+],
+"v11": [
+true,
+92
+]
+},
+"libero_spatial|5|D13|0|170": {
+"v9": [
+false,
+220
+],
+"v11": [
+false,
+220
+]
+},
+"libero_spatial|5|D15|0|170": {
+"v9": [
+true,
+109
+],
+"v11": [
+true,
+109
+]
+},
+"libero_spatial|5|D17|0|170": {
+"v9": [
+true,
+153
+],
+"v11": [
+true,
+153
+]
+},
+"libero_spatial|5|D20|0|170": {
+"v9": [
+true,
+85
+],
+"v11": [
+true,
+85
+]
+},
+"libero_spatial|5|S01|0|170": {
+"v9": [
+true,
+83
+],
+"v11": [
+true,
+83
+]
+},
+"libero_spatial|5|S03|0|170": {
+"v9": [
+true,
+95
+],
+"v11": [
+true,
+95
+]
+},
+"libero_spatial|5|S05|0|170": {
+"v9": [
+false,
+220
+],
+"v11": [
+false,
+220
+]
+},
+"libero_spatial|5|S08|0|170": {
+"v9": [
+true,
+87
+],
+"v11": [
+true,
+158
+]
+},
+"libero_spatial|5|S10|0|170": {
+"v9": [
+true,
+88
+],
+"v11": [
+true,
+88
+]
+},
+"libero_spatial|5|S12|0|170": {
+"v9": [
+false,
+220
+],
+"v11": [
+false,
+220
+]
+},
+"libero_spatial|5|S14|0|170": {
+"v9": [
+false,
+220
+],
+"v11": [
+false,
+220
+]
+},
+"libero_spatial|5|S16|0|170": {
+"v9": [
+true,
+89
+],
+"v11": [
+true,
+89
+]
+},
+"libero_spatial|5|S18|0|170": {
+"v9": [
+true,
+88
+],
+"v11": [
+true,
+110
+]
+},
+"libero_spatial|5|S20|0|170": {
+"v9": [
+true,
+152
+],
+"v11": [
+true,
+210
+]
+},
+"libero_spatial|5|S22|0|170": {
+"v9": [
+true,
+87
+],
+"v11": [
+true,
+87
+]
+},
+"libero_spatial|6|D01|0|170": {
+"v9": [
+false,
+220
+],
+"v11": [
+false,
+220
+]
+},
+"libero_spatial|6|D03|0|170": {
+"v9": [
+false,
+220
+],
+"v11": [
+false,
+220
+]
+},
+"libero_spatial|6|D05|0|170": {
+"v9": [
+false,
+220
+],
+"v11": [
+true,
+177
+]
+},
+"libero_spatial|6|D07|0|170": {
+"v9": [
+true,
+120
+],
+"v11": [
+true,
+119
+]
+},
+"libero_spatial|6|D09|0|170": {
+"v9": [
+true,
+118
+],
+"v11": [
+true,
+118
+]
+},
+"libero_spatial|6|D11|0|170": {
+"v9": [
+true,
+118
+],
+"v11": [
+true,
+118
+]
+},
+"libero_spatial|6|D13|0|170": {
+"v9": [
+true,
+163
+],
+"v11": [
+true,
+163
+]
+},
+"libero_spatial|6|D15|0|170": {
+"v9": [
+true,
+220
+],
+"v11": [
+true,
+220
+]
+},
+"libero_spatial|6|D17|0|170": {
+"v9": [
+true,
+187
+],
+"v11": [
+true,
+187
+]
+},
+"libero_spatial|6|D20|0|170": {
+"v9": [
+true,
+118
+],
+"v11": [
+true,
+118
+]
+},
+"libero_spatial|6|S01|0|170": {
+"v9": [
+false,
+220
+],
+"v11": [
+false,
+220
+]
+},
+"libero_spatial|6|S03|0|170": {
+"v9": [
+true,
+120
+],
+"v11": [
+true,
+120
+]
+},
+"libero_spatial|6|S07|0|170": {
+"v9": [
+true,
+119
+],
+"v11": [
+true,
+119
+]
+},
+"libero_spatial|6|S09|0|170": {
+"v9": [
+true,
+103
+],
+"v11": [
+true,
+103
+]
+},
+"libero_spatial|6|S11|0|170": {
+"v9": [
+true,
+109
+],
+"v11": [
+true,
+109
+]
+},
+"libero_spatial|6|S13|0|170": {
+"v9": [
+true,
+123
+],
+"v11": [
+true,
+123
+]
+},
+"libero_spatial|6|S15|0|170": {
+"v9": [
+true,
+98
+],
+"v11": [
+true,
+119
+]
+},
+"libero_spatial|6|S17|0|170": {
+"v9": [
+true,
+95
+],
+"v11": [
+true,
+95
+]
+},
+"libero_spatial|6|S19|0|170": {
+"v9": [
+true,
+115
+],
+"v11": [
+true,
+115
+]
+},
+"libero_spatial|6|S21|0|170": {
+"v9": [
+true,
+117
+],
+"v11": [
+true,
+117
+]
+},
+"libero_spatial|7|BASE|0|170": {
+"v9": [
+true,
+91
+],
+"v11": [
+true,
+91
+]
+},
+"libero_spatial|7|D02|0|170": {
+"v9": [
+true,
+95
+],
+"v11": [
+true,
+95
+]
+},
+"libero_spatial|7|D04|0|170": {
+"v9": [
+true,
+95
+],
+"v11": [
+true,
+95
+]
+},
+"libero_spatial|7|D06|0|170": {
+"v9": [
+true,
+91
+],
+"v11": [
+true,
+91
+]
+},
+"libero_spatial|7|D08|0|170": {
+"v9": [
+true,
+97
+],
+"v11": [
+true,
+97
+]
+},
+"libero_spatial|7|D10|0|170": {
+"v9": [
+true,
+92
+],
+"v11": [
+true,
+92
+]
+},
+"libero_spatial|7|D12|0|170": {
+"v9": [
+true,
+142
+],
+"v11": [
+true,
+142
+]
+},
+"libero_spatial|7|D14|0|170": {
+"v9": [
+true,
+137
+],
+"v11": [
+true,
+137
+]
+},
+"libero_spatial|7|D16|0|170": {
+"v9": [
+true,
+94
+],
+"v11": [
+true,
+94
+]
+},
+"libero_spatial|7|D18|0|170": {
+"v9": [
+false,
+220
+],
+"v11": [
+false,
+220
+]
+},
+"libero_spatial|7|D21|0|170": {
+"v9": [
+true,
+89
+],
+"v11": [
+true,
+89
+]
+},
+"libero_spatial|7|S02|0|170": {
+"v9": [
+true,
+140
+],
+"v11": [
+true,
+140
+]
+},
+"libero_spatial|7|S05|0|170": {
+"v9": [
+true,
+117
+],
+"v11": [
+true,
+117
+]
+},
+"libero_spatial|7|S08|0|170": {
+"v9": [
+false,
+220
+],
+"v11": [
+false,
+220
+]
+},
+"libero_spatial|7|S10|0|170": {
+"v9": [
+true,
+88
+],
+"v11": [
+true,
+88
+]
+},
+"libero_spatial|7|S12|0|170": {
+"v9": [
+false,
+220
+],
+"v11": [
+false,
+220
+]
+},
+"libero_spatial|7|S14|0|170": {
+"v9": [
+false,
+220
+],
+"v11": [
+true,
+101
+]
+},
+"libero_spatial|7|S16|0|170": {
+"v9": [
+true,
+109
+],
+"v11": [
+true,
+132
+]
+},
+"libero_spatial|7|S18|0|170": {
+"v9": [
+true,
+96
+],
+"v11": [
+true,
+121
+]
+},
+"libero_spatial|7|S20|0|170": {
+"v9": [
+true,
+214
+],
+"v11": [
+true,
+214
+]
+},
+"libero_spatial|7|S22|0|170": {
+"v9": [
+true,
+90
+],
+"v11": [
+true,
+90
+]
+},
+"libero_spatial|9|D01|0|170": {
+"v9": [
+false,
+220
+],
+"v11": [
+false,
+220
+]
+},
+"libero_spatial|9|D03|0|170": {
+"v9": [
+false,
+220
+],
+"v11": [
+false,
+220
+]
+},
+"libero_spatial|9|D05|0|170": {
+"v9": [
+true,
+193
+],
+"v11": [
+true,
+131
+]
+},
+"libero_spatial|9|D07|0|170": {
+"v9": [
+true,
+116
+],
+"v11": [
+true,
+116
+]
+},
+"libero_spatial|9|D09|0|170": {
+"v9": [
+true,
+115
+],
+"v11": [
+true,
+115
+]
+},
+"libero_spatial|9|D11|0|170": {
+"v9": [
+true,
+134
+],
+"v11": [
+true,
+134
+]
+},
+"libero_spatial|9|D13|0|170": {
+"v9": [
+false,
+220
+],
+"v11": [
+false,
+220
+]
+},
+"libero_spatial|9|D15|0|170": {
+"v9": [
+true,
+141
+],
+"v11": [
+true,
+141
+]
+},
+"libero_spatial|9|D17|0|170": {
+"v9": [
+true,
+176
+],
+"v11": [
+true,
+176
+]
+},
+"libero_spatial|9|D20|0|170": {
+"v9": [
+true,
+121
+],
+"v11": [
+true,
+121
+]
+},
+"libero_spatial|9|S01|0|170": {
+"v9": [
+false,
+220
+],
+"v11": [
+false,
+220
+]
+},
+"libero_spatial|9|S03|0|170": {
+"v9": [
+true,
+112
+],
+"v11": [
+true,
+112
+]
+},
+"libero_spatial|9|S07|0|170": {
+"v9": [
+true,
+117
+],
+"v11": [
+true,
+117
+]
+},
+"libero_spatial|9|S09|0|170": {
+"v9": [
+true,
+122
+],
+"v11": [
+true,
+115
+]
+},
+"libero_spatial|9|S11|0|170": {
+"v9": [
+true,
+123
+],
+"v11": [
+true,
+122
+]
+},
+"libero_spatial|9|S13|0|170": {
+"v9": [
+false,
+220
+],
+"v11": [
+false,
+220
+]
+},
+"libero_spatial|9|S15|0|170": {
+"v9": [
+true,
+115
+],
+"v11": [
+true,
+115
+]
+},
+"libero_spatial|9|S17|0|170": {
+"v9": [
+true,
+113
+],
+"v11": [
+true,
+113
+]
+},
+"libero_spatial|9|S19|0|170": {
+"v9": [
+true,
+114
+],
+"v11": [
+true,
+114
+]
+},
+"libero_spatial|9|S21|0|170": {
+"v9": [
+true,
+115
+],
+"v11": [
+true,
+115
+]
+}
+}
+},
+"plain8": {
+"v11": {
+"machine": "the same pod as the practice list's v11 run",
+"seeds": [
+142,
+143,
+144,
+145,
+146
+],
+"solved": 40,
+"of": 40
+},
+"episodes": {
+"libero_10|5|BASE|0|142": {
+"v11": [
+true,
+93
+]
+},
+"libero_10|5|BASE|0|143": {
+"v11": [
+true,
+93
+]
+},
+"libero_10|5|BASE|0|144": {
+"v11": [
+true,
+93
+]
+},
+"libero_10|5|BASE|0|145": {
+"v11": [
+true,
+93
+]
+},
+"libero_10|5|BASE|0|146": {
+"v11": [
+true,
+93
+]
+},
+"libero_10|8|BASE|0|142": {
+"v11": [
+true,
+222
+]
+},
+"libero_10|8|BASE|0|143": {
+"v11": [
+true,
+216
+]
+},
+"libero_10|8|BASE|0|144": {
+"v11": [
+true,
+227
+]
+},
+"libero_10|8|BASE|0|145": {
+"v11": [
+true,
+233
+]
+},
+"libero_10|8|BASE|0|146": {
+"v11": [
+true,
+221
+]
+},
+"libero_goal|3|BASE|0|142": {
+"v11": [
+true,
+201
+]
+},
+"libero_goal|3|BASE|0|143": {
+"v11": [
+true,
+200
+]
+},
+"libero_goal|3|BASE|0|144": {
+"v11": [
+true,
+205
+]
+},
+"libero_goal|3|BASE|0|145": {
+"v11": [
+true,
+202
+]
+},
+"libero_goal|3|BASE|0|146": {
+"v11": [
+true,
+204
+]
+},
+"libero_goal|6|BASE|0|142": {
+"v11": [
+true,
+73
+]
+},
+"libero_goal|6|BASE|0|143": {
+"v11": [
+true,
+73
+]
+},
+"libero_goal|6|BASE|0|144": {
+"v11": [
+true,
+72
+]
+},
+"libero_goal|6|BASE|0|145": {
+"v11": [
+true,
+72
+]
+},
+"libero_goal|6|BASE|0|146": {
+"v11": [
+true,
+72
+]
+},
+"libero_object|1|BASE|0|142": {
+"v11": [
+true,
+87
+]
+},
+"libero_object|1|BASE|0|143": {
+"v11": [
+true,
+85
+]
+},
+"libero_object|1|BASE|0|144": {
+"v11": [
+true,
+86
+]
+},
+"libero_object|1|BASE|0|145": {
+"v11": [
+true,
+85
+]
+},
+"libero_object|1|BASE|0|146": {
+"v11": [
+true,
+85
+]
+},
+"libero_object|8|BASE|0|142": {
+"v11": [
+true,
+93
+]
+},
+"libero_object|8|BASE|0|143": {
+"v11": [
+true,
+93
+]
+},
+"libero_object|8|BASE|0|144": {
+"v11": [
+true,
+94
+]
+},
+"libero_object|8|BASE|0|145": {
+"v11": [
+true,
+93
+]
+},
+"libero_object|8|BASE|0|146": {
+"v11": [
+true,
+93
+]
+},
+"libero_spatial|0|BASE|0|142": {
+"v11": [
+true,
+72
+]
+},
+"libero_spatial|0|BASE|0|143": {
+"v11": [
+true,
+68
+]
+},
+"libero_spatial|0|BASE|0|144": {
+"v11": [
+true,
+72
+]
+},
+"libero_spatial|0|BASE|0|145": {
+"v11": [
+true,
+71
+]
+},
+"libero_spatial|0|BASE|0|146": {
+"v11": [
+true,
+73
+]
+},
+"libero_spatial|8|BASE|0|142": {
+"v11": [
+true,
+81
+]
+},
+"libero_spatial|8|BASE|0|143": {
+"v11": [
+true,
+76
+]
+},
+"libero_spatial|8|BASE|0|144": {
+"v11": [
+true,
+80
+]
+},
+"libero_spatial|8|BASE|0|145": {
+"v11": [
+true,
+80
+]
+},
+"libero_spatial|8|BASE|0|146": {
+"v11": [
+true,
+75
+]
+}
+}
+},
+"format": "episode key = suite|task|case|start state|seed; each value = [solved, steps taken]"
+}
