@@ -40,8 +40,9 @@ weights, no demonstrations, no real pictures.
 - **The files hold more than weights.** Each is 129 MB: the weights (43 MB), the optimiser's state, validation
   scores and timings. The main net's file also holds one path string from our external drive (a folder name; no
   person's name). We publish the files unchanged so that their checksums equal the registered ones.
-- **They are PyTorch pickle files.** Loading such a file can run code, so only load files you trust and whose
-  checksum you have compared (`python -m rowant_lab.pro2.scored verify` compares both with the lock).
+- **They are PyTorch checkpoint files.** This code loads them in PyTorch's weights-only mode, which does not run
+  code from the file. If you load them another way, compare the checksum first
+  (`python -m rowant_lab.pro2.scored verify` compares both with the lock).
 - **Retraining cannot rebuild these two files.** Training sets no random seed, stops by the clock and uses mixed
   precision; our frames were not kept (about 50 GB); and the frame plans replay action sequences from episodes of
   our program's earlier versions. A net trained again with this code is a net of the same kind, and the robot's

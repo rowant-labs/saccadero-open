@@ -79,7 +79,8 @@ attempt gained on the blind type and lost about as much elsewhere. See `docs/RES
 ## Reproduce
 
 **What you need.** Linux, one NVIDIA RTX 4090 (other GPU types give somewhat different outcomes), 16 or more
-processors, 48 GB of memory for ten workers, about 20 GB of disk. The benchmark's evaluation download, which you
+processors, about 5 GB of memory and up to 2.6 GB of GPU memory per worker (the scripts start eight), about 20 GB
+of disk. The benchmark's evaluation download, which you
 get from the benchmark yourself. Our two depth nets, which are release files of this repository.
 
 **Get the benchmark first.** Download and prepare it as its data card says
@@ -101,8 +102,9 @@ bash scripts/reproduce_plain8.sh                    # the eight test tasks, plai
 bash scripts/reproduce_practice.sh                  # 60 training-split episodes, compared with our outcomes
 ```
 
-The full test split is `scripts/reproduce_test_split.sh v9 --test-split` (13 to 20 hours on one such machine;
-19 to 27 for v11). It asks for the flag because it touches the test split. **Please develop on the training
+The full test split is `scripts/reproduce_test_split.sh v9 --test-split` (with ten workers about 13 to 20 hours on
+one such machine, 19 to 27 for v11; the script's default of eight is safer for a 24 GB card and about a quarter
+slower). It asks for the flag because it touches the test split. **Please develop on the training
 split**: everything else here does.
 
 **What "reproduce" means here.** The parameters, the plan, the benchmark's archive and the two nets are the same by

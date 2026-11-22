@@ -68,9 +68,15 @@ echo "export MUJOCO_GL=$GL PYOPENGL_PLATFORM=$GL LP_NUM_THREADS=1" > "$ROWANT_DA
 
 log "checks"
 "$WPY" -I -c "
-import torch, numpy, mujoco, robosuite, libero, libero_remote
+import sys
+sys.path.insert(0, '$REPO')
+from rowant_lab.libero_env import m2_rpaths
+m2_rpaths.pin_numba_cache()  # as the runner does, before robosuite is imported
+import torch, numpy, mujoco, robosuite, libero
+from rowant_lab.pro2 import dev_episode
+dev_episode.adapter_class()  # the benchmark's environment class, loaded from your download as the runner loads it
 assert torch.cuda.is_available(), 'no CUDA device'
-print('worker: python ok, numpy', numpy.__version__, 'torch', torch.__version__, torch.cuda.get_device_name(0),
+print('worker: imports ok, numpy', numpy.__version__, 'torch', torch.__version__, torch.cuda.get_device_name(0),
       'mujoco', mujoco.__version__, 'robosuite', robosuite.__version__)"
 PYTHONPATH="$REPO" "$SPY" -B -P -c "
 import importlib, numpy

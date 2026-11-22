@@ -13,7 +13,9 @@ What it does, in order:
 3. writes ``RUN_DIR/episodes.json`` and ``RUN_DIR/params.json`` and starts the runner (``rowant_lab/pro2/dev_run.py``)
    in the worker's environment with N worker processes, each with its own perception server.
 
-A run that is stopped can be started again with the same command: finished episodes are not played again.
+A run that is stopped can be started again with the same command: finished episodes are not played again. If the
+runner ends with 4, some episodes have no outcome yet (a worker died three times in a row, usually for GPU memory):
+run the same command again, with fewer workers if it repeats.
 Pictures are asked at 1024 pixels, as in both scored runs (the benchmark's default is 256; the depth nets were
 trained at 1024). Episodes of the benchmark's test split are refused unless ``--test-split`` is given.
 
@@ -65,7 +67,9 @@ def main(argv=None) -> int:
     ap.add_argument("--config", choices=sorted(CONFIGS), required=True)
     ap.add_argument("--episodes", type=Path, required=True, help="a list made by scripts/episodes.py")
     ap.add_argument("--out", type=Path, required=True, help="the run folder (rows are appended; a re-run resumes)")
-    ap.add_argument("--workers", type=int, default=max(1, min(10, (os.cpu_count() or 2) // 2 - 1)))
+    ap.add_argument("--workers", type=int, default=max(1, min(8, (os.cpu_count() or 2) // 2 - 1)),
+                    help="worker processes (default: up to 8). Each holds up to 2.6 GB of GPU memory and about 5 GB "
+                         "of memory; ten fit a 24 GB card only while not all of them have loaded both depth nets")
     ap.add_argument("--camera-px", type=int, default=1024, help="1024 in both scored runs")
     ap.add_argument("--test-split", action="store_true", help="yes, these are episodes of the benchmark's test split")
     ap.add_argument("--device", choices=("cuda", "cpu"), default="cuda",
