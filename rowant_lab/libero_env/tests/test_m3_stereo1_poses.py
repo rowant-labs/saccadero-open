@@ -523,6 +523,30 @@ def _export_ok() -> bool:
     return (MP.EXPORT_DIR / "panda-libero_spatial.json").exists() and (MP.POLICY_LIB / "manifest.json").exists()
 
 
+def _same_document(a, b, tol: float, skip=()) -> bool:
+    """Two JSON documents with the same shape, text and whole numbers, and every decimal number within `tol`. The
+    entries named in `skip` are not compared."""
+    if isinstance(a, dict) and isinstance(b, dict):
+        return set(a) == set(b) and all(k in skip or _same_document(a[k], b[k], tol, skip) for k in a)
+    if isinstance(a, list) and isinstance(b, list):
+        return len(a) == len(b) and all(_same_document(x, y, tol, skip) for x, y in zip(a, b))
+    if isinstance(a, float) and isinstance(b, float):
+        return abs(a - b) <= tol
+    return type(a) is type(b) and a == b
+
+
+def test_same_document_is_strict_about_everything_but_last_digits():
+    a = {"n": 3, "name": "hand", "v": [[0.0, 0.25], [1.0, 2.0]], "sha": "aa", "none": None}
+    assert _same_document(a, json.loads(json.dumps(a)), 0.0)
+    assert _same_document(a, dict(a, v=[[1e-17, 0.25], [1.0, 2.0]]), 1e-9)
+    assert not _same_document(a, dict(a, v=[[1e-6, 0.25], [1.0, 2.0]]), 1e-9)       # a number too far
+    assert not _same_document(a, dict(a, v=[[0.0, 0.25]]), 1e-9)                    # another shape
+    assert not _same_document(a, dict(a, v=[[0, 0.25], [1.0, 2.0]]), 1e-9)          # a whole number for a decimal
+    assert not _same_document(a, dict(a, n=4), 1e-9) and not _same_document(a, dict(a, name="x"), 1e-9)
+    assert not _same_document(a, dict(a, sha="bb"), 1e-9) and _same_document(a, dict(a, sha="bb"), 1e-9, {"sha"})
+    assert not _same_document(a, {k: v for k, v in a.items() if k != "none"}, 1e-9)
+
+
 @pytest.mark.skipif(not _export_ok(),
                     reason="the object library (its export and policy folders) is not built on this machine")
 def test_hand_model_reproduces_m2_kin_fk():
@@ -542,10 +566,11 @@ def test_hand_model_reproduces_m2_kin_fk():
         for b in model["bodies"]:
             (key,) = panda.bodies[b["name"]]["geoms"]
             # The stored model was made from an export built on an Apple-silicon Mac. An export built on another
-            # kind of processor has the same meshes with other last digits in the vertices
-            # (docs/CHANGES-FROM-AS-RUN.md), so the vertices are compared within a micrometre and the faces exactly.
+            # kind of processor has the same meshes with other last digits in the vertices: 7e-17 m at most on the
+            # Linux machine we tried (docs/CHANGES-FROM-AS-RUN.md). So the vertices are compared within a
+            # nanometre and the faces exactly.
             stored, built = np.array(b["vertices"]), panda.arrays[f"{key}__V"]
-            assert stored.shape == built.shape and float(np.abs(stored - built).max()) <= 1e-6, (suite, b["name"])
+            assert stored.shape == built.shape and float(np.abs(stored - built).max()) <= 1e-9, (suite, b["name"])
             assert np.array_equal(np.array(b["faces"]), panda.arrays[f"{key}__F"])
     # the fingers open along the hand y axis, in opposite directions, with the grip site 0.097 m down hand z
     assert model["source"]["grip_site_in_hand_m"] == [0.0, 0.0, 0.097]
@@ -555,5 +580,11 @@ def test_hand_model_reproduces_m2_kin_fk():
     assert np.allclose(left["gripper0_rightfinger"][:3, 3] - zero["gripper0_rightfinger"][:3, 3], [0, -0.04, 0])
     V, F = HM.posed_vertices(model, [0.02, -0.02])
     assert V.shape == (3613 + 318 + 318, 3) and F.max() == len(V) - 1
-    # the file is the tool's own output, byte for byte, and its build is deterministic
-    assert HM.dumps(HM.make_doc()) == HM.OUT.read_bytes()
+    # The file is the tool's own output. From the library it was made from, the build gives it byte for byte. From
+    # a library you built yourself, the two checksums in its `source` block are those of your library's files, and
+    # on another kind of processor the numbers differ in their last digits. Then everything else must be the same:
+    # the text and the faces exactly, every number within a nanometre.
+    made = HM.dumps(HM.make_doc())
+    if made != HM.OUT.read_bytes():
+        assert _same_document(json.loads(made), json.loads(HM.OUT.read_bytes()), 1e-9,
+                              skip={"exports_sha256", "policy_manifest_sha256"})
