@@ -159,7 +159,10 @@ been run end to end. Outcomes also differ by GPU type and by the host processor'
 (`docs/DISCLOSURES.md`). Every check and its numbers: `docs/CHANGES-FROM-AS-RUN.md`.
 
 **Release files.** The two depth nets (`colour-long.pt`, `colour2.pt`; their checksums are in
-`docs/DEPTH-NETS.md`). The rows of both runs and their plan will be added as release files.
+`docs/DEPTH-NETS.md`), and the rows of both runs with their plan (`saccadero-pro2-rows.tar.gz`). The rows leave
+out the benchmark's instruction text, which is not ours to hand on: each row names its episode by suite, task,
+case, start state and seed, and the instruction is in your own download. They also leave out two readings our
+evaluator took from the simulator after each episode. The scorer needs neither.
 
 ## What is in this repository, and what is not
 

@@ -161,7 +161,8 @@ Registered formula, shifted episodes only.
 
 ## Checking these numbers yourself
 
-The rows of both runs and the plan are release files of this repository (see the README for when and where).
+The rows of both runs and the plan are a release file of this repository, `saccadero-pro2-rows.tar.gz` (the README
+says what the rows leave out).
 With them,
 
     python scripts/score.py --plan plan.json --rows first-run/scored-p0 first-run/scored-p1 first-run/scored-p2 first-run/scored-p3
