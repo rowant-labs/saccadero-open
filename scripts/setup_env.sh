@@ -1,13 +1,15 @@
 #!/usr/bin/env bash
-# Build the two Python environments this code runs in. Linux with an NVIDIA GPU; needs `uv`.
+# Build the three Python environments this code uses. Linux with an NVIDIA GPU; needs `uv`.
 #
 #   source configs/paths.env        # your copy of configs/paths.example.env
 #   bash scripts/setup_env.sh
 #
 # The steps are the ones the machines of both scored runs were set up with:
-#   * Python 3.11.11 in both environments;
+#   * Python 3.11.11 in all three environments;
 #   * the worker's environment (simulator side): requirements/worker.txt, then torch 2.5.1 built for CUDA 12.4;
 #   * the perception server's environment: requirements/server.txt;
+#   * the export environment, for building the object libraries: the worker's packages with MuJoCo 3.3.2, the
+#     version the libraries of both scored runs were made with (requirements/export.txt says why);
 #   * the benchmark's own two source trees, made importable in the worker's environment only (they are used from
 #     your download, never installed or copied);
 #   * a LIBERO configuration file that points at your download;
@@ -21,8 +23,10 @@ REPO=$(cd "$(dirname "$0")/.." && pwd)
 BENCH=${ROWANT_BENCHMARK:-$ROWANT_DATA/benchmark/LIBERO-Pro-evaluation}
 WPY=${ROWANT_WORKER_PYTHON:-$ROWANT_DATA/venvs/worker/bin/python}
 SPY=${ROWANT_SERVER_PYTHON:-$ROWANT_DATA/venvs/server/bin/python}
+EPY=${ROWANT_EXPORT_PYTHON:-$ROWANT_DATA/venvs/export/bin/python}
 W=$(dirname "$(dirname "$WPY")")
 S=$(dirname "$(dirname "$SPY")")
+E=$(dirname "$(dirname "$EPY")")
 CFG=$ROWANT_DATA/libero-config
 log() { echo "[$(date -u +%H:%M:%S)] $*"; }
 
@@ -30,15 +34,19 @@ log() { echo "[$(date -u +%H:%M:%S)] $*"; }
     echo "the benchmark's download was not found under $BENCH (set ROWANT_BENCHMARK)"; exit 4; }
 command -v uv >/dev/null || { echo "uv is needed: https://docs.astral.sh/uv/"; exit 4; }
 
-log "Python 3.11.11 and the two environments"
+log "Python 3.11.11 and the three environments"
 uv python install 3.11.11
 [ -x "$WPY" ] || uv venv -q --python 3.11.11 "$W"
 [ -x "$SPY" ] || uv venv -q --python 3.11.11 "$S"
+[ -x "$EPY" ] || uv venv -q --python 3.11.11 "$E"
 uv pip install -q --python "$WPY" --index-strategy unsafe-best-match \
     --extra-index-url https://download.pytorch.org/whl/cpu -r "$REPO/requirements/worker.txt"
 uv pip install -q --python "$WPY" --reinstall-package torch "torch==2.5.1+cu124" \
     --index-url https://download.pytorch.org/whl/cu124
 uv pip install -q --python "$SPY" -r "$REPO/requirements/server.txt"
+uv pip install -q --python "$EPY" --index-strategy unsafe-best-match \
+    --extra-index-url https://download.pytorch.org/whl/cpu -r "$REPO/requirements/worker.txt"
+uv pip install -q --python "$EPY" -r "$REPO/requirements/export.txt"
 
 log "the benchmark's source trees and LIBERO's configuration, for the worker's environment"
 SITE=$("$WPY" -c 'import site; print(site.getsitepackages()[0])')
@@ -84,4 +92,8 @@ import rowant_lab.libero_env.m2_perceive as P
 for m in P.PREIMPORTS + ('rowant_lab.fastlayer.scorers.render_compare', 'skimage.color', 'cv2', 'PIL.Image'):
     importlib.import_module(m)
 print('server: imports ok, numpy', numpy.__version__)"
+"$EPY" -I -c "
+import mujoco, numpy, robosuite, torch
+assert mujoco.__version__ == '3.3.2', mujoco.__version__
+print('export: imports ok, numpy', numpy.__version__, 'mujoco', mujoco.__version__, 'robosuite', robosuite.__version__)"
 log "done. Before a run:  source $ROWANT_DATA/env.sh   (renderer: $GL, $(nproc) processors)"

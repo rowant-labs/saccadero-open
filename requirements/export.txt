@@ -1,0 +1,6 @@
+# The export environment: it runs the simulator steps of scripts/build_libraries.py and nothing else.
+# It is the worker's environment (requirements/worker.txt, installed first) with one package changed:
+# the object libraries of both scored runs were made with MuJoCo 3.3.2 on the development machine, while the
+# episodes ran with MuJoCo 3.2.3 on rented machines. The two versions compile some meshes differently, so
+# libraries exported with 3.2.3 are not the libraries of the scored runs (docs/CHANGES-FROM-AS-RUN.md).
+mujoco==3.3.2

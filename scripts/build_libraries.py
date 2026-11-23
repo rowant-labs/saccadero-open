@@ -13,9 +13,15 @@ the assets archive unpacked into ``simulator-source/libero/libero/assets``. ``--
 (``ROWANT_DATA``); the libraries are written under ``<data>/runs``. Both default to the settings
 (``rowant_lab/settings.py``, ``rowant_lab/pro2/machine.py``), as do the two interpreters:
 
-* the simulator environment (``--worker-python``; LIBERO's dependencies, robosuite, MuJoCo, torch) runs the export
-  steps, which compile each base task's scene and read the compiled models;
+* the export environment (``--export-python``; LIBERO's dependencies, robosuite, torch and MuJoCo 3.3.2) runs the
+  export steps, which compile each base task's scene and read the compiled models;
 * the perception environment (``--server-python``; numpy 2, scipy, scikit-image, OpenCV) runs everything else.
+
+The export environment is not the one the episodes run in. The libraries of both scored runs were made on the
+development machine with MuJoCo 3.3.2; the episodes ran on rented machines with MuJoCo 3.2.3. MuJoCo's two
+versions compile some meshes differently (vertices that differ in the tenth decimal place, and for a few meshes
+another vertex count), and everything built from those meshes then differs too. So the export steps check the
+version and refuse another one unless ``--any-mujoco`` is given; ``scripts/setup_env.sh`` builds the environment.
 
 On a machine without a display, pass ``--gl egl`` (a GPU) or ``--gl osmesa`` (software), or set ``MUJOCO_GL``
 yourself: the simulator steps open a render context, though no picture is used. The whole build takes about
@@ -74,6 +80,7 @@ import time
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[1]
+LIBRARY_MUJOCO = "3.3.2"  # the MuJoCo version the libraries of both scored runs were exported with
 THREAD_VARS = ("OMP_NUM_THREADS", "OPENBLAS_NUM_THREADS", "MKL_NUM_THREADS", "VECLIB_MAXIMUM_THREADS")
 M2_SUITES = ("libero_spatial", "libero_object")  # in the order the first build onboarded them
 GOAL_SUITE = "libero_goal"
@@ -181,7 +188,7 @@ class Ctx:
     def __init__(self, a):
         self.data = Path(a.data).expanduser().resolve()
         self.bench = Path(a.benchmark).expanduser().resolve()
-        self.worker, self.server = a.worker_python, a.server_python
+        self.export, self.server = a.export_python, a.server_python
         self.gl = a.gl
         self.runs = self.data / "runs"
         self.work = self.runs / "build-libraries"
@@ -195,7 +202,7 @@ class Ctx:
 
     def env(self, side: str) -> dict:
         env = dict(os.environ)
-        env.update(ROWANT_DATA=str(self.data), ROWANT_BENCHMARK=str(self.bench), ROWANT_WORKER_PYTHON=self.worker,
+        env.update(ROWANT_DATA=str(self.data), ROWANT_BENCHMARK=str(self.bench), ROWANT_EXPORT_PYTHON=self.export,
                    ROWANT_SERVER_PYTHON=self.server)
         for k in THREAD_VARS:  # one thread: the perception memory was built single-threaded
             env[k] = "1"
@@ -207,7 +214,7 @@ class Ctx:
         return env
 
     def python(self, side: str) -> str:
-        return self.worker if side == "sim" else self.server
+        return self.export if side == "sim" else self.server
 
 
 def link_tree(src: Path, dst: Path) -> None:
@@ -397,6 +404,16 @@ def runtime_file(c: Ctx, rel: str) -> bool:
             or p == Path("libero-m1") / "library" / "robot.json")
 
 
+def versions_of(c: Ctx, side: str) -> dict:
+    """The versions one side's interpreter reports (``child_info``)."""
+    cmd = [c.python(side), "-I", "-B", str(Path(__file__).resolve()), "--child", side, "@info"]
+    p = subprocess.run(cmd, env=c.env(side), cwd=str(c.work), capture_output=True, text=True)
+    try:
+        return json.loads(p.stdout.strip().splitlines()[-1])
+    except Exception:
+        return {"error": (p.stderr or p.stdout)[-500:]}
+
+
 def write_manifest(c: Ctx) -> int:
     """``manifest.json``: every file under the library folders with its sha256 and size, the files a run reads
     marked, the versions of both environments and the step records."""
@@ -407,14 +424,7 @@ def write_manifest(c: Ctx) -> int:
             p = root / rel
             r = str(p.relative_to(c.runs))
             files.append({"file": r, "sha256": sha256_file(p), "bytes": p.stat().st_size, "runtime": runtime_file(c, r)})
-    versions = {}
-    for side in ("sim", "perc"):
-        cmd = [c.python(side), "-I", "-B", str(Path(__file__).resolve()), "--child", side, "@info"]
-        p = subprocess.run(cmd, env=c.env(side), cwd=str(c.work), capture_output=True, text=True)
-        try:
-            versions[side] = json.loads(p.stdout.strip().splitlines()[-1])
-        except Exception:
-            versions[side] = {"error": (p.stderr or p.stdout)[-500:]}
+    versions = {side: versions_of(c, side) for side in ("sim", "perc")}
     recs = []
     for f in sorted((c.work / "steps").glob("*.json")):
         d = json.loads(f.read_text())
@@ -440,7 +450,11 @@ def main(argv=None) -> int:
     ap.add_argument("--data", default=os.environ.get("ROWANT_DATA"), help="the data folder (ROWANT_DATA)")
     ap.add_argument("--benchmark", default=os.environ.get("ROWANT_BENCHMARK"),
                     help="the unpacked download: the folder holding simulator-source and service-source")
-    ap.add_argument("--worker-python", default=None, help="the simulator environment's interpreter")
+    ap.add_argument("--export-python", default=None,
+                    help=f"the export environment's interpreter (the simulator side, MuJoCo {LIBRARY_MUJOCO})")
+    ap.add_argument("--any-mujoco", action="store_true",
+                    help=f"run the export steps with another MuJoCo version than {LIBRARY_MUJOCO}: the libraries "
+                         "then differ from those of the scored runs, and so do the robot's commands")
     ap.add_argument("--server-python", default=None, help="the perception environment's interpreter")
     ap.add_argument("--steps", default="all", help="comma-separated step names (default: all)")
     ap.add_argument("--redo", default="", help="comma-separated steps whose outputs are removed and built again")
@@ -454,7 +468,7 @@ def main(argv=None) -> int:
     os.environ["ROWANT_DATA"] = str(Path(a.data).expanduser().resolve())
     if a.benchmark:
         os.environ["ROWANT_BENCHMARK"] = str(Path(a.benchmark).expanduser().resolve())
-    for flag, var in ((a.worker_python, "ROWANT_WORKER_PYTHON"), (a.server_python, "ROWANT_SERVER_PYTHON")):
+    for flag, var in ((a.export_python, "ROWANT_EXPORT_PYTHON"), (a.server_python, "ROWANT_SERVER_PYTHON")):
         if flag:
             os.environ[var] = flag
     sys.path.insert(0, str(REPO))
@@ -462,7 +476,7 @@ def main(argv=None) -> int:
     from rowant_lab.pro2 import machine  # the settings: read after the flags are in the environment
 
     a.benchmark = str(machine.BENCHMARK)
-    a.worker_python, a.server_python = machine.WORKER_PYTHON, machine.SERVER_PYTHON
+    a.export_python, a.server_python = machine.EXPORT_PYTHON, machine.SERVER_PYTHON
     c = Ctx(a)
     todo = steps(c)
     names = [s["name"] for s in todo]
@@ -483,15 +497,27 @@ def main(argv=None) -> int:
             return 2
     for side in ("sim", "perc"):
         if not Path(c.python(side)).exists():
-            print(f"REFUSE: no interpreter at {c.python(side)} (--worker-python / --server-python)", file=sys.stderr)
+            print(f"REFUSE: no interpreter at {c.python(side)} (--export-python / --server-python; "
+                  f"scripts/setup_env.sh builds both)", file=sys.stderr)
             return 2
     why = path_problem(sim / "assets")
     if why:
         print(f"REFUSE: {why}", file=sys.stderr)
         return 2
     c.work.mkdir(parents=True, exist_ok=True)
-    print(f"data      {c.data}\nbenchmark {c.bench}\nsimulator environment  {c.worker}\nperception environment "
+    print(f"data      {c.data}\nbenchmark {c.bench}\nexport environment     {c.export}\nperception environment "
           f"{c.server}\n", flush=True)
+    will_run = [s for s in todo if (s["name"] in chosen or s["name"] in redo) and s["side"] == "sim"
+                and (s["name"] in redo or not is_done(c, s))]
+    if will_run:
+        has = versions_of(c, "sim").get("mujoco")
+        if has != LIBRARY_MUJOCO and not a.any_mujoco:
+            print(f"REFUSE: the export environment has MuJoCo {has}; the libraries of the scored runs were exported "
+                  f"with {LIBRARY_MUJOCO} (scripts/setup_env.sh builds that environment; --any-mujoco builds "
+                  f"libraries that differ from them)", file=sys.stderr)
+            return 2
+        print(f"export environment: MuJoCo {has}" + ("" if has == LIBRARY_MUJOCO else
+              f" (NOT {LIBRARY_MUJOCO}: these libraries will differ from those of the scored runs)") + "\n", flush=True)
     t_all, summary = time.perf_counter(), []
     for i, st in enumerate(todo):
         if st["name"] not in chosen and st["name"] not in redo:

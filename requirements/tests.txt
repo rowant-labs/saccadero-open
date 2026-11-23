@@ -1,0 +1,4 @@
+# For the tests only (docs/CODE-MAP.md); installed into the perception server's environment on request:
+#   uv pip install --python "$ROWANT_SERVER_PYTHON" -r requirements/tests.txt
+pytest==9.1.1
+pytest-xdist==3.8.0

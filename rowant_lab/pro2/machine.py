@@ -9,6 +9,9 @@ Environment variables (``configs/paths.example.env`` lists them with examples):
 * ``ROWANT_WORKER_PYTHON``, ``ROWANT_SERVER_PYTHON``: the interpreters of the two environments
   (``requirements/worker.txt``, ``requirements/server.txt``). Defaults: ``<data>/venvs/worker/bin/python`` and
   ``<data>/venvs/server/bin/python``.
+* ``ROWANT_EXPORT_PYTHON``: the interpreter of the environment that builds the object libraries' simulator steps
+  (``requirements/export.txt``: the worker's packages with MuJoCo 3.3.2, the version the libraries of the scored
+  runs were made with; the episodes themselves ran MuJoCo 3.2.3). Default: ``<data>/venvs/export/bin/python``.
 * ``ROWANT_NETS``: the folder with the two depth nets, ``colour-long.pt`` and ``colour2.pt``. Default:
   ``<data>/nets``.
 * ``ROWANT_BUNDLE``: the folder that holds the benchmark's archive ``evaluation.zip`` as it was downloaded (needed
@@ -33,6 +36,7 @@ REPO_ROOT = Path(__file__).resolve().parents[2]
 BENCHMARK = Path(os.environ.get("ROWANT_BENCHMARK") or DATA / "benchmark" / "LIBERO-Pro-evaluation").expanduser()
 WORKER_PYTHON = os.environ.get("ROWANT_WORKER_PYTHON") or str(DATA / "venvs" / "worker" / "bin" / "python")
 SERVER_PYTHON = os.environ.get("ROWANT_SERVER_PYTHON") or str(DATA / "venvs" / "server" / "bin" / "python")
+EXPORT_PYTHON = os.environ.get("ROWANT_EXPORT_PYTHON") or str(DATA / "venvs" / "export" / "bin" / "python")
 NETS = Path(os.environ.get("ROWANT_NETS") or DATA / "nets").expanduser()
 BUNDLE = Path(os.environ.get("ROWANT_BUNDLE") or DATA / "benchmark").expanduser()  # holds evaluation.zip as downloaded
 LONG_LIB = DATA / "runs" / "pro2" / "long-lib"  # the object libraries the scored configurations read

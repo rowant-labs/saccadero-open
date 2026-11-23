@@ -66,7 +66,8 @@ practice list and the plain list from your own download.
 
 ## Tests
 
-    PYTHONPATH=$PWD <server python> -P -m pytest rowant_lab/libero_env/tests -q
+    uv pip install --python "$ROWANT_SERVER_PYTHON" -r requirements/tests.txt
+    PYTHONPATH=$PWD "$ROWANT_SERVER_PYTHON" -P -m pytest rowant_lab/libero_env/tests -q -n 4
 
 From a fresh clone most run and the rest skip for want of a built library; with `ROWANT_DATA` pointing at built
 libraries they run too. They include guards that read the policy's source and fail if it reaches for the

@@ -93,9 +93,10 @@ do not need the benchmark's own Conda environment or its service.
 ```bash
 cp configs/paths.example.env configs/paths.env      # edit it: where the download and the data folder are
 source configs/paths.env
-bash scripts/setup_env.sh                           # the two Python environments, with exact versions
+bash scripts/setup_env.sh                           # the three Python environments, with exact versions
 source "$ROWANT_DATA/env.sh"
 "$ROWANT_DATA/venvs/server/bin/python" scripts/machine_check.py   # does every processor compute the same?
+"$ROWANT_DATA/venvs/server/bin/python" -m rowant_lab.pro2.scored verify   # parameters and nets against the lock
 python3 scripts/build_libraries.py                  # the object libraries, from your download (about an hour)
 python3 scripts/compare_libraries.py docs/records/scored-runtime-libraries.digest.json "$ROWANT_DATA/runs"   # yours against ours
 bash scripts/reproduce_plain8.sh                    # the eight test tasks, plain: 24 episodes per configuration
