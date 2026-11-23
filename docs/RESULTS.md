@@ -41,9 +41,12 @@ Two runs on the test split of LIBERO-Pro2.0, each registered before it started. 
 two. It is a second attempt on a test split that was no longer unseen, built knowing the first run's totals by type
 and task. It is not an improvement, and it is not a new result. Quote both or neither.
 
-**Beside the public board, not on it.** When we read the board on 2026-11-17 it listed 20 models; the best Overall
-was 81.7 and the second 75.0. Either run would stand second of 21 on every reading above. Nothing was submitted, and
-this is not a placement. The comparison is also not like for like:
+**Beside the public board, not on it.** The benchmark was made to evaluate the robustness of embodied foundation
+models, and the entries on its board are learned models. Our program is not one: it is geometry and rules, written
+for this benchmark's tasks. So the board is a scale to read our numbers against, not a ranking they belong in. When
+we read the board on 2026-11-17 it listed 20 models; the best Overall was 81.7 and the second 75.0. Both runs fall
+between those two on every reading above. Nothing was submitted, and this is not a placement. Beyond the difference
+in kind, the comparison is not like for like in these ways:
 
 - our program was **developed on the training split's perturbations** (41 of the 42 types; the blind type S06 was
   never run in development). The benchmark's paper evaluates its models from their released checkpoints, which as

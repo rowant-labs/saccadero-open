@@ -11,4 +11,5 @@ abstract: >-
   A robot program for the LIBERO-Pro2.0 simulation benchmark, written without demonstrations, a policy network or
   a language model in the control loop, and the records of two registered runs on the benchmark's test split
   (Overall 81.1 by the public board's own weighting, 81.2 by the formula registered before the runs). Developed on
-  the training split's perturbations; uses the benchmark's object models; simulation only; not a board placement.
+  the training split's perturbations; uses the benchmark's object models; simulation only; not a foundation model
+  and not a board placement.

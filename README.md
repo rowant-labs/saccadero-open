@@ -10,10 +10,13 @@ only neural networks are two small nets that estimate depth from a colour pictur
 rules: it fits stored object models to what it sees, reads the instruction with rules, plans grasps and motions by
 geometry, and checks its own work as it goes.
 
-**What it is not.** It has never run on a real robot. It is not a general policy: it uses the benchmark's own
-object models, and a good deal of knowledge about the benchmark's scenes is written into it. It contains no code
-of the [Monty](https://github.com/thousandbrainsproject/tbp.monty) project (the project it grew out of), though a
-few functions follow Monty's mathematics and are credited in `THIRD_PARTY_NOTICES.md`.
+**What it is not.** It is not the kind of system the benchmark was made for. LIBERO-Pro2.0 is, by its own title,
+a benchmark for evaluating the robustness of embodied foundation models: general models that learned from data.
+This is a program of geometry and rules, written for this benchmark's tasks. It is not a general policy: it uses
+the benchmark's own object models, and a good deal of knowledge about the benchmark's scenes is written into it.
+It has never run on a real robot. It contains no code of the
+[Monty](https://github.com/thousandbrainsproject/tbp.monty) project (the project it grew out of), though a few
+functions follow Monty's mathematics and are credited in `THIRD_PARTY_NOTICES.md`.
 
 ## The result, with its labels
 
@@ -26,12 +29,17 @@ Two runs of the benchmark's test split (10,170 episodes each), each registered b
 | Overall, by the formula registered before the runs | 81.2 | 81.2 |
 | Plain (unperturbed) tasks, not in Overall | 240 of 240 | 240 of 240 |
 
+- **Not the kind of system the benchmark ranks.** The benchmark was made for embodied foundation models, and the
+  entries on its public board are learned models (labelled there as VLA, world action or robustness-oriented).
+  This is a program of geometry and rules. Its score shows how far such a program gets on the same episodes. It is
+  not a measure of a general model's robustness, which is what the board's numbers are.
 - **Developed on the training split's perturbations.** The program practised the training tasks under 41 of the 42
   perturbation types. As far as we can tell, the models on the public board were not trained on them.
 - **Uses the benchmark's object models.** Object shapes and fixture joints come from the benchmark's asset files.
 - **Simulation only.**
-- **Not a board placement.** Nothing was submitted and nobody at the benchmark has checked these numbers. Beside
-  the board as we read it on 2026-11-17 (20 models, best 81.7, second 75.0) either run would stand second.
+- **Not a board placement.** Nothing was submitted and nobody at the benchmark has checked these numbers. For
+  scale: when we read the board on 2026-11-17 it listed 20 models, the best at 81.7 and the second at 75.0. Both
+  runs fall between those two. That is a number beside the board, not a rank among its models.
 - **Both runs are always reported together.** The second is a second attempt on a test split that was no longer
   unseen. The two are level; the second is not an improvement.
 

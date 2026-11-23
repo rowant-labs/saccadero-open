@@ -5,24 +5,29 @@ is the short list; the rest is the full one. Where a statement rests on somethin
 
 ## Before you quote the number
 
-1. **Simulation only.** Both runs are episodes in the benchmark's simulator. Nothing here has been run on a robot.
-2. **Developed on the training split's perturbations.** The program practised the training tasks under 41 of the
+1. **Not the kind of system the benchmark was made for.** LIBERO-Pro2.0 is, by its own title, a benchmark for
+   evaluating the robustness of embodied foundation models, and the entries on its board are learned models. This
+   is a program of geometry and rules, written for the benchmark's tasks. Its score shows how far such a program
+   gets on the same episodes. It does not measure the robustness of a general model.
+2. **Simulation only.** Both runs are episodes in the benchmark's simulator. Nothing here has been run on a robot.
+3. **Developed on the training split's perturbations.** The program practised the training tasks under 41 of the
    42 perturbation types. The models on the public board were, as far as we can tell, not trained on them.
-3. **It uses the benchmark's object models.** Object shapes and fixture joints are built from the benchmark's own
+4. **It uses the benchmark's object models.** Object shapes and fixture joints are built from the benchmark's own
    asset files. A learned policy does not get those.
-4. **Not submitted, not a placement.** "Second of 21" is where the number would stand beside the public board as
-   we read it on 2026-11-17. Nobody at the benchmark has checked it.
-5. **Two runs, always together.** The second is a second attempt on a test split that was no longer unseen. The
+5. **Not submitted, not a placement.** Both runs fall between the best (81.7) and the second (75.0) of the 20
+   models on the public board as we read it on 2026-11-17. That is where the number sits beside the board, not a
+   rank among its models. Nobody at the benchmark has checked it.
+6. **Two runs, always together.** The second is a second attempt on a test split that was no longer unseen. The
    two are level.
-6. **The headline depends on the formula.** 81.1 by the weighting the board's own averages follow, 81.2 by the
+7. **The headline depends on the formula.** 81.1 by the weighting the board's own averages follow, 81.2 by the
    formula we registered before the runs. `docs/RESULTS.md` gives four readings.
-7. **Our own runner and scorer.** The benchmark's evaluation service was not used. We step the benchmark's
+8. **Our own runner and scorer.** The benchmark's evaluation service was not used. We step the benchmark's
    environment class inside our own process.
-8. **Pictures at 1024 pixels.** The protocol allows 16 to 1024 and defaults to 256. No registration or lock
+9. **Pictures at 1024 pixels.** The protocol allows 16 to 1024 and defaults to 256. No registration or lock
    recorded this setting; it was set in the script that started the runs.
-9. **One perturbation type never reached the program** (D21, the instruction reworded during the episode), and it
-   scored 100.
-10. **Stored knowledge of the benchmark's scenes** is written into the code and the parameters: see below.
+10. **One perturbation type never reached the program** (D21, the instruction reworded during the episode), and it
+    scored 100.
+11. **Stored knowledge of the benchmark's scenes** is written into the code and the parameters: see below.
 
 ## How it was developed
 
