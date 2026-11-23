@@ -98,8 +98,9 @@ is the short list; the rest is the full one. Where a statement rests on somethin
   Object task) after one retry with the same seed. They are counted and left out as registered. The benchmark's
   service retries in a fresh process; ours retries in the same one. Whether the refusals are the benchmark's or an
   effect of our runner was never tested.
-- **Versions.** Python 3.11 with newer numpy and torch, against the benchmark's reference of Python 3.8. MuJoCo and
-  robosuite match the reference.
+- **Versions.** Python 3.11 with newer numpy and torch, against the benchmark's reference of Python 3.8. In the
+  environment the episodes ran in, MuJoCo (3.2.3) and robosuite match the reference. The object libraries were built
+  with MuJoCo 3.3.2, on another machine (see Repeatability).
 - **Parity with the reference environment was measured once**, on 2026-11-07: 40 chains of actions from an earlier
   form of the program that read the simulator's depth, Object and Spatial only; the same outcome in 40 of 40. It was
   never measured for the configurations that were scored, nor for the Goal and long suites.
@@ -110,9 +111,13 @@ is the short list; the rest is the full one. Where a statement rests on somethin
 
 - Outcomes depend on the GPU type: the same 80 plain episodes gave 76 to 77 solved on an RTX 4090 and 69 on an
   A6000. Both runs used rented RTX 4090 machines.
-- Two RTX 4090 machines with different host processors do not send identical commands: 43 of 60 plain episodes
-  identical with all 60 the same outcome; on the practice list 211 of 476 identical with the same total. Each run
-  used machines of two processor families. A rerun should come close and will not match episode for episode.
+- Two RTX 4090 machines with host processors of different families (an EPYC and a Ryzen) do not send identical
+  commands: 43 of 60 plain episodes identical with all 60 the same outcome; on the practice list 211 of 476
+  identical with the same total. Each run used machines of two processor families. A rerun should come close and
+  will not match episode for episode.
+- Two machines of one family did agree. A clean clone of this repository with our libraries, on two rented RTX 4090
+  machines (EPYC 7763 and EPYC 7452), sent the same commands in 166 of 168 episode runs, and on each machine all
+  120 practice episode runs had the recorded outcome and step count.
 - On one machine, two runs of one configuration differed in commands in 5 of 476 episodes and in no outcome. (A
   registration said such a run "repeats exactly"; that was written before this was measured.)
 - No interval for Overall was measured.
@@ -121,9 +126,16 @@ is the short list; the rest is the full one. Where a statement rests on somethin
   sign of that fault. The second attempt's machines passed the check twice.
 - The exact runs need the two registered depth nets. A retrained net would give slightly different numbers, and
   retraining cannot rebuild our two files (`docs/DEPTH-NETS.md`).
-- The object libraries of the scored runs were built in stages on our machines, the first stage from the original
-  LIBERO release, with MuJoCo 3.3.2 on a Mac (the runs' workers used MuJoCo 3.2.3 on Linux). This repository
-  rebuilds them from the download; `docs/CHANGES-FROM-AS-RUN.md` says how close the rebuilt ones are.
+- **The object libraries depend on the machine that builds them, and the outcomes depend on the libraries.** Ours
+  were built in stages on an Apple-silicon Mac, the first stage from the original LIBERO release, with MuJoCo 3.3.2
+  (the runs' workers used MuJoCo 3.2.3 on Linux). This repository rebuilds them from the download. Built on an
+  Apple-silicon Mac they are ours, every array bit for bit on two Macs. Built on Linux x86-64 with the same package
+  versions, 87 of the 306 files differ: in the last digits of the mesh vertices to begin with, and visibly in some
+  of what is built on them (the match templates, one object's stored grasps). The program is sensitive to that. Of
+  180 practice episodes the outcome differed in 9 with v9 (155 solved, 156 recorded) and in 7 with v11 (157
+  solved, 158 recorded), and about half of the episodes took another number of steps. The plain test tasks were
+  solved either way, 24 of 24. We did not run the test split with Linux-built libraries, so the Overall they would
+  give is not known. `docs/CHANGES-FROM-AS-RUN.md` has the detail.
 
 ## What cannot be checked from outside
 

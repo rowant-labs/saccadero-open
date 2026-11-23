@@ -23,6 +23,12 @@ versions compile some meshes differently (vertices that differ in the tenth deci
 another vertex count), and everything built from those meshes then differs too. So the export steps check the
 version and refuse another one unless ``--any-mujoco`` is given; ``scripts/setup_env.sh`` builds the environment.
 
+The kind of processor matters as well. That development machine was an Apple-silicon Mac. Built on such a Mac, every
+array comes out the same as in the scored libraries; built on Linux x86-64 with the same package versions, the mesh
+vertices differ in their last digits and what is computed from the meshes differs after them
+(``docs/CHANGES-FROM-AS-RUN.md`` has the numbers, the README the commands for a Mac).
+``scripts/compare_libraries.py`` tells you how a build compares with the scored libraries.
+
 On a machine without a display, pass ``--gl egl`` (a GPU) or ``--gl osmesa`` (software), or set ``MUJOCO_GL``
 yourself: the simulator steps open a render context, though no picture is used. The whole build takes about
 45 minutes on one processor core; nearly all of it is the perception memory.

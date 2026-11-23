@@ -108,11 +108,47 @@ one such machine, 19 to 27 for v11; the script's default of eight is safer for a
 slower). It asks for the flag because it touches the test split. **Please develop on the training
 split**: everything else here does.
 
-**What "reproduce" means here.** The parameters, the plan, the benchmark's archive and the two nets are the same by
-checksum (`python -m rowant_lab.pro2.scored verify`). The scorer gives our published numbers from our published
-rows. A fresh run on an RTX 4090 lands close to ours. It does not mean identical rows: outcomes differ by GPU type
-and host processor, and the object libraries you build are close to ours but not byte for byte the same
-(`docs/CHANGES-FROM-AS-RUN.md`).
+**How close you get depends on where the libraries are built.** Ours were built on an Apple-silicon Mac and copied
+to the rented Linux machines that ran the episodes.
+
+- **Built on an Apple-silicon Mac, they are ours.** From a fresh clone and clean environments, every array, mesh,
+  grid and template came out bit for bit on the Mac ours were built on (M3). On a second Mac (M4) every array did
+  too, and one text mesh file wrote `0.000000` where ours has `-0.000000`. With libraries identical to ours, a
+  clean clone repeated the recorded outcome and step count of all 120 practice episode runs we tried (60 episodes,
+  both configurations), on each of two rented RTX 4090 machines.
+- **Built on Linux, they are close to ours and not the same.** The package versions are the same; the processor
+  is of another kind. 87 of the 306 files differ from ours. The differences start in the last digits of the mesh
+  vertices (1.4e-14 m at most) and grow in what is built on them: the match templates and one object's stored
+  grasps differ visibly. With those libraries a clean clone solved 24 of 24 plain episodes with each configuration
+  and, of 180 practice episodes, 155 with v9 and 157 with v11, where our recorded runs solved 156 and 158. The
+  outcome changed in 9 and 7 single episodes, some lost and some gained. We have not run the test split with
+  Linux-built libraries and do not know what Overall they give.
+
+To build them on a Mac (Python 3.11; we used 3.11.11; no GPU is needed), make the two environments the builder
+uses and run it:
+
+```bash
+python3.11 -m venv "$ROWANT_DATA/venvs/export"
+"$ROWANT_DATA/venvs/export/bin/pip" install -r requirements/worker.txt
+"$ROWANT_DATA/venvs/export/bin/pip" install -r requirements/export.txt    # MuJoCo 3.3.2 in place of 3.2.3
+python3.11 -m venv "$ROWANT_DATA/venvs/server"
+"$ROWANT_DATA/venvs/server/bin/pip" install -r requirements/server.txt
+python3 scripts/build_libraries.py                                        # about half an hour
+python3 scripts/compare_libraries.py docs/records/scored-runtime-libraries.digest.json "$ROWANT_DATA/runs"
+```
+
+The comparison should name one file as `differs` (a block of one manifest that no run reads), or four with the mesh
+file above. Then copy `$ROWANT_DATA/runs` to the Linux machine. A library names its own files and the benchmark's
+textures by absolute path, so `ROWANT_DATA` and `ROWANT_BENCHMARK` must be the same paths on both machines; ours
+were.
+
+**What "reproduce" means here.** The parameters and the two nets are the same by checksum, and the benchmark's
+archive too if you kept it (`python -m rowant_lab.pro2.scored verify`). The scorer gives our published numbers from
+our published rows. The episodes above were played from a clean clone on rented machines of the kind our runs
+used (RTX 4090, AMD EPYC host processor). They are plain and training-split episodes. We have not run the test
+split again from this repository: that would be a third attempt, and `scripts/reproduce_test_split.sh` has not
+been run end to end. Outcomes also differ by GPU type and by the host processor's family
+(`docs/DISCLOSURES.md`). Every check and its numbers: `docs/CHANGES-FROM-AS-RUN.md`.
 
 **Release files.** The two depth nets (`colour-long.pt`, `colour2.pt`; their checksums are in
 `docs/DEPTH-NETS.md`). The rows of both runs and their plan will be added as release files.

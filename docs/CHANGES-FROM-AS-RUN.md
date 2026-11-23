@@ -4,7 +4,7 @@ This repository was carved out of a larger private one. It is not the tree the t
 
 ## Two things to know first
 
-- **The two runs ran two states of the code.** Every row of the first run records one checksum of the policy package and every row of the second another; 19 files changed between them (the learner, the camera registration, parts of the agent, the episode runner and the perception server). This repository holds the later state, the second attempt's. v11 adds parameters to v9 and changes none of v9's values, and on the practice list v9 solved 411 of 476 on both states. Whether v9 sends the same commands on both states was checked on one machine; the result is under "How we checked" below.
+- **The two runs ran two states of the code.** Every row of the first run records one checksum of the policy package and every row of the second another; 19 files changed between them (the learner, the camera registration, parts of the agent, the episode runner and the perception server). This repository holds the later state, the second attempt's. v11 adds parameters to v9 and changes none of v9's values, and on the practice list v9 solved 411 of 476 on both states. We checked that this does not matter for v9: on one rented machine the same 84 episodes (the eight plain test tasks at three seeds, and 60 practice episodes) were played with v9 on the first run's state of the code and on the second's, and every command sent to the robot was the same in all 84. So this one tree serves both configurations.
 
 - **The registered parameters are untouched.** `configs/v9.registered.json` and `configs/v11.registered.json` are the registered texts byte for byte, and the code here builds the same two texts (a test checks both checksums against the locks). They name four places as they were on our machines. `rowant_lab/pro2/machine.py` swaps those four values for yours when a run starts, so the parameters a row of your run records differ from ours in those four values and in nothing else. One data file, `rowant_lab/pro2/colour_adapter_params.json`, is published unchanged for the same reason and still carries paths of our machines.
 
@@ -41,7 +41,7 @@ An earlier form of the program read the simulator's depth instead of estimating 
 - A private branch name that was a default value in `m3_stereo1_audit.py` (used by a command the runs never called) is now `origin/HEAD`.
 - Two camera helpers moved into `rowant_lab/pro2/camera_math.py` from a module that is not published.
 - The practice tools read the folder of finished runs from the settings instead of from a second-world module.
-- The two environments' version pins are `requirements/worker.txt` and `requirements/server.txt` (the worker's with MuJoCo 3.2.3, as on the machines of both runs).
+- The version pins of the two environments an episode runs in are `requirements/worker.txt` and `requirements/server.txt` (the worker's with MuJoCo 3.2.3, as on the machines of both runs). A third environment, `requirements/export.txt`, is the worker's with MuJoCo 3.3.2 and runs the library builder's simulator steps only (section 7 says why).
 
 ### 7. The library builders
 
@@ -53,11 +53,35 @@ An earlier form of the program read the simulator's depth instead of estimating 
 - the long suite's build no longer needs an original LIBERO checkout beside it; its record of that comparison is then empty (`long_lib.py`);
 - `long_lib.py` gained a command that writes LIBERO's configuration.
 
-**How close the rebuilt libraries are.** On the machine the scored libraries were built on (a Mac, MuJoCo 3.3.2), the rebuilt run-time set of 306 files has 198 byte-identical files and 107 with the same content: every numeric array, mesh, grid and template is identical bit for bit, and what differs is path strings, time stamps, timings and the checksums that follow from those. One file differs in content: a manifest's `sources` block, as said above. Whether Linux with the pinned MuJoCo 3.2.3 gives the same arrays is measured in the proof run below.
+**How close the rebuilt libraries are depends on the machine that builds them.** `docs/records/scored-runtime-libraries.digest.json` holds the checksums of our libraries (no content), so `python scripts/compare_libraries.py docs/records/scored-runtime-libraries.digest.json "$ROWANT_DATA/runs"` tells you how yours compare. A run reads 306 files. The first three builds below started from a fresh clone, with environments made from the published requirement files; the last two are our earlier tries with the version the episodes ran with:
 
-`docs/records/scored-runtime-libraries.digest.json` holds the checksums of our libraries (no content), so `python scripts/compare_libraries.py docs/records/scored-runtime-libraries.digest.json "$ROWANT_DATA/runs"` tells you how yours compare.
+| Built on | identical | same content | differs |
+|---|---|---|---|
+| the Mac ours were built on (Apple M3), MuJoCo 3.3.2 | 198 | 107 | 1 |
+| a second Mac (Apple M4), MuJoCo 3.3.2 | 182 | 120 | 4 |
+| a rented Linux machine (x86-64), MuJoCo 3.3.2 | 117 | 102 | 87 |
+| a rented Linux machine (x86-64), MuJoCo 3.2.3 | 52 | 41 | 213 |
+| the first Mac, MuJoCo 3.2.3 | 58 | 41 | 207 |
 
-One thing to know: the scored libraries were exported with MuJoCo 3.3.2 on a Mac, while the runs' workers used MuJoCo 3.2.3 on Linux, the version this repository pins.
+"Same content" means the bytes differ only in path strings, time stamps, timings and the checksums that follow from those.
+
+- **On the first Mac** every numeric array, mesh, grid and template is ours bit for bit. The one file that differs is the manifest whose `sources` block changed, as said above.
+- **On the second Mac** every numeric array is ours too. Three more files differ, and they are one file: the stove's mesh, a text file that three suites' folders each hold, has `0.000000` where ours has `-0.000000` in 1,200 values.
+- **On Linux, with the same version of every package,** 87 files differ, on each of two rented machines (EPYC 7452 and EPYC 7282). The differences start in the last digits and grow where a later step of the build makes a choice on those digits. Measured array by array on the second machine:
+
+  - the mesh vertices of the robot exports: three quarters of the values, by 1.4e-14 m at most;
+  - the points of the 59 object memories: 17% of the values, by 2.2e-16 m at most. The features stored with the points: 57% of the values, and in 25 of the 59 objects some of them by more than a thousandth (2 at most);
+  - 47 object mesh files, which are text: 6,939 of 2.9 million lines, by one unit of the sixth decimal;
+  - the colour memories' gradients: 13% of the values, by 0.00015 at most;
+  - the match templates: 56 descriptor arrays differ, 52 of them in 2% of their values, and four hold one to four keypoints fewer;
+  - the six symmetry records: mostly last digits, but in places a principal axis comes out differently, and one object's list of symmetries names another turn;
+  - the stored grasps of one object (the BBQ sauce bottle): 1,891 values;
+  - five more records (three objects' and two grids'): the last digit.
+
+  The versions being equal, what is left is the kind of processor: Apple's arm64 against x86-64. A version pin cannot remove that.
+- **With MuJoCo 3.2.3,** the version the episodes ran with and the one we tried first, most files differ on either kind of machine: the two versions compile some meshes differently (one of the Panda's meshes gets another number of vertices). The libraries of both scored runs were exported with MuJoCo 3.3.2 on the development machine. So the builder has an environment of its own with that version (`requirements/export.txt`) and refuses another unless told `--any-mujoco`.
+
+To build libraries that are ours, build them on an Apple-silicon Mac and copy them to the machine that runs the episodes, at the same folder paths (a library names its files by absolute path); the README has the commands. That is how both scored runs were made. What the Linux-built libraries do to episodes is under "How we checked" below.
 
 ### 8. Comments
 
@@ -65,7 +89,9 @@ Comments and docstrings that named a person, a private working document, a rente
 
 ### 9. Tests
 
-54 test files were carried, with 794 of their 835 test functions. 41 were removed because they tested modules that are not published or read private files; a few lost single assertions for the same reason. Tests that need built libraries now skip when there are none. From a fresh clone about 790 pass and about 180 skip; with built libraries about 965 pass.
+54 test files were carried, with 794 of their 835 test functions. 41 were removed because they tested modules that are not published or read private files; a few lost single assertions for the same reason. Tests that need built libraries now skip when there are none.
+
+One test was changed for libraries that are not ours. It checks the Panda hand model stored in this repository against the built library, and it compared two things exactly: the model's vertices with the library's, and the stored file with the tool's fresh output, byte for byte. Neither holds for a library you build yourself. On Linux the vertices differ in the last digits (7e-17 m at most; section 7), and on any machine the file's `source` block carries two checksums of your library's files. The test now passes on equal bytes; otherwise it compares every number within a nanometre and the text and the faces exactly, those two checksums aside (`test_m3_stereo1_poses.py`, with a small test of the comparison itself).
 
 Two guard tests police what the policy side may import and name. Their lists were adapted to the tree and nothing else: files that are not here left the lists; `rowant_lab.settings` is allowed as an import of `m2_paths.py`; two imports that no longer exist were removed from the allow-list (stricter); the planted leaks the guard must catch are now planted in `m2_ground.py`; and one name check is skipped for a module that is not published (`m2_mminus`), while its import stays under the allow-list.
 
@@ -74,8 +100,16 @@ Two guard tests police what the policy side may import and name. Their lists wer
 - **Imports.** Every import of our own package inside this tree resolves inside it, apart from the switched-off options listed in `docs/CODE-MAP.md`.
 - **Registered parameters.** Built by this code, both texts have the checksums registered before the runs (a test).
 - **Scores.** The scorer here gives our stored numbers from the rows of both runs.
-- **Tests.** With built libraries 970 pass and 7 skip; from a fresh clone 796 pass and 181 skip.
-- **The same commands on one machine.** The same episodes were played from the private tree and from this one on one machine, and the commands sent to the robot were compared step by step. The results, and those of the proof run on one rented RTX 4090 machine (the private tree against a clean clone of this repository, the scored libraries against rebuilt ones, the first run's code against this code), are added by the commit that follows this one.
+- **The lock check.** In clean environments on a rented machine, `python -m rowant_lab.pro2.scored verify` found both parameter texts and both depth nets equal to their locks. On our own machine, which keeps the benchmark's archive, it found the archive equal too.
+- **Tests.** On rented Linux machines, from a clean clone with the published environments: 755 pass and 182 skip without a data folder, on two machines. With the libraries built there: 927 pass, 9 skip and 1 fails, on each of the two. The one that fails is the hand-model test of section 9: on the first machine at its vertex comparison, and on the second, after that was changed, at its last line. The last line was changed after the second machine was given back. It was then checked on our Mac, against the document that machine's build had produced and with libraries rebuilt on the Mac, and it has not been run on Linux since. On our Mac with our own data folder, which holds more than the libraries: 974 pass and 4 skip.
+- **The same commands on one machine (a Mac).** 29 episodes were played from the private tree and again from this one, with the depth nets on the processor: the eight plain test tasks with each configuration, ten practice episodes with v11 and three with v9. All 29 had the same outcome, the same number of steps and the same commands, action for action. (This check found one fault in the carve-out before any episode ran: see section 3.)
+- **A clean clone against the private tree, on a rented machine.** One RTX 4090 machine with an EPYC 7763 host, machine check first. The episodes: the eight plain test tasks at three seeds (24) and a fixed sample of 60 practice episodes, each with v9 and with v11, so 168 episode runs. Both trees read our own libraries. The outcome was the same in 168 of 168 and every command the same in 166. Of the two that differ, one departs at step 68 by less than a millionth and ends with the same step count and outcome; the other is a plain task that took 75 steps from one tree and 76 from the other, and the private tree by itself took 79 steps where the recorded run took 80 on that task at another seed, so that task wobbles by a step without any change of code.
+- **The first run's code against this code.** v9, the same 84 episodes, the same machine: every command the same in 84 of 84.
+- **A second machine.** The clean clone again on another rented RTX 4090 machine (EPYC 7452), set up by the README's own commands, with our libraries: the same outcome as on the first machine in 168 of 168 episode runs, every command the same in 166.
+- **Against the recorded outcomes.** `docs/records/reference-outcomes.json` holds the outcome and step count of our development runs. On each of the two machines all 120 practice episode runs had the recorded outcome and the recorded step count (54 of 60 solved with v9, 53 with v11), and both configurations solved the plain eight 24 of 24.
+- **With libraries rebuilt on a Mac.** The eight plain test tasks were played on the Mac with v11, once with our own libraries and once with libraries built there from a fresh clone, in clean environments and at other folder paths: the same outcome, step count and commands in 8 of 8.
+- **With libraries rebuilt on Linux.** The library build and the README's two reproduce scripts ran on the rented machines as the README gives them (section 7 says how those libraries differ from ours). Plain eight: 24 of 24 solved by both configurations; every command the same as with our libraries in 7 of the 24 episodes for v9 and 8 for v11. Practice, the first 180 episodes of the sample's fixed order (60 on the EPYC 7452 machine, 120 on a third, EPYC 7282, each with the libraries it had built): v9 solved 155 where our recorded runs solved 156, and the outcome differed in 9 episodes (5 lost, 4 gained); v11 solved 157 against 158, differing in 7 (4 lost, 3 gained). The step count differed from the recorded one in 88 and 89 of the 180. An earlier build with MuJoCo 3.2.3 gave 52 and 55 on the first 60, where the recorded runs have 54 and 53. So the libraries' differences change about half of the episodes in detail and single episodes in outcome, in both directions; the totals stayed within one episode of the recorded ones. We did not run the test split with Linux-built libraries and do not know what Overall they give.
+- **Not checked.** The test split was not run from this repository: that would be a third attempt at it. So `scripts/reproduce_test_split.sh` has not been run end to end, and its two steps that open the test split's task files (`unpack`, `plan`) were not run from this tree. `check-plan` makes the same comparison on the training split: in our own environment our plan builder gave the benchmark's planner's 40,470 episodes exactly. In the two published environments the benchmark's planner cannot be imported, and `plan` then relies on the checksum of the plan's episode ids (`docs/records/plan-keys.json`).
 
 ## Every file
 
@@ -111,7 +145,7 @@ Two guard tests police what the policy side may import and name. Their lists wer
 | `pro2/long_dev.py` | code | 777d4d381362 | 1084a1870e11 | changed ROOT, long_params |
 | `pro2/long_lib.py` | code | 279d2ae520bb | 1d0e297b2094 | added cmd_config; changed LL, ORIG_BDDL, cmd_export, main |
 | `pro2/long_paths.py` | identical | dfd6e73f2cc2 | dfd6e73f2cc2 |  |
-| `pro2/machine.py` | new |  | 535e209f82dd |  |
+| `pro2/machine.py` | new |  | 62b64148864e |  |
 | `pro2/plain.py` | code | 4ea2db870cb1 | 09378500da84 | added stmt if __package__ in (None, ''):     sys.path.append(str(Path(_; changed CFG, PAYLOAD |
 | `pro2/pod_selfcheck.py` | comments | 56b3913a8e71 | 92a7a67ca7e4 |  |
 | `pro2/practice.py` | code | 9a9dc2fdd46f | 7f77f5c6bc0a | added ADAPTER, EVAL; changed DEVRUNS, ROOT, run_params |
@@ -209,7 +243,7 @@ Two guard tests police what the policy side may import and name. Their lists wer
 | `libero_env/tests/test_m2_truth_guard.py` | code | e76f9afabcc4 | 858832434801 | added NOT_IN_RELEASE, PLANT_IN, _absent; changed POLICY_FILES, POLICY_IMPORTS, POLICY_IMPORTS_PER_FILE, _planted, perception_violations… |
 | `libero_env/tests/test_m2_units.py` | comments | 9e6097dead9e | 56d75b253f6d |  |
 | `libero_env/tests/test_m3_stereo1_match.py` | code | a087b54789e5 | 8a9550d5e4d3 | 2 removed; changed _child_env, test_ast_import_allowlist, test_ast_no_c_level_io_no_spawn_no_banned_constants, test_g0_grid_numbers, test_g0_peak_rss_ |
-| `libero_env/tests/test_m3_stereo1_poses.py` | code | 61d8d524bc38 | 0ae8f7c466f0 | 1 removed; added needs_git, _git_checkout, test_k_true_is_the_wrist_cameras_intrinsics; changed run_cli, test_cli_pt_poses_pick_settled_po_end_to_end, |
+| `libero_env/tests/test_m3_stereo1_poses.py` | code | 61d8d524bc38 | c5a93eb182a4 | 1 removed; added needs_git, _git_checkout, _same_document, test_k_true_is_the_wrist_cameras_intrinsics…; changed run_cli, test_cli_pt_poses_pick_settl |
 | `libero_env/tests/test_machine.py` | new |  | f6844e05f14b |  |
 | `libero_env/tests/test_path_route.py` | code | 859fd6b70e32 | 136e889792da | changed pytestmark |
 | `libero_env/tests/test_place_evidence.py` | comments | f4bf0a94693e | 0964ad849834 |  |

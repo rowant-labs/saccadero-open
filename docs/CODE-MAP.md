@@ -16,6 +16,10 @@ Two processes, in two Python environments.
 
 They talk over a local socket (`m2_bridge.py`) and check each other's versions and shared code when they connect.
 
+A third environment runs no episode. It is the worker's with MuJoCo 3.3.2 instead of 3.2.3, and the library
+builder (`scripts/build_libraries.py`) uses it for its simulator steps, because the libraries of both scored runs
+were made with that version (`requirements/export.txt`).
+
 ## Folders
 
 | Folder | What it holds |
