@@ -541,7 +541,11 @@ def test_hand_model_reproduces_m2_kin_fk():
         assert res["n_poses"] == 45 and res["max_abs_R"] <= 1e-9 and res["max_abs_t_m"] <= 1e-9, (suite, res)
         for b in model["bodies"]:
             (key,) = panda.bodies[b["name"]]["geoms"]
-            assert np.array_equal(np.array(b["vertices"]), panda.arrays[f"{key}__V"])
+            # The stored model was made from an export built on an Apple-silicon Mac. An export built on another
+            # kind of processor has the same meshes with other last digits in the vertices
+            # (docs/CHANGES-FROM-AS-RUN.md), so the vertices are compared within a micrometre and the faces exactly.
+            stored, built = np.array(b["vertices"]), panda.arrays[f"{key}__V"]
+            assert stored.shape == built.shape and float(np.abs(stored - built).max()) <= 1e-6, (suite, b["name"])
             assert np.array_equal(np.array(b["faces"]), panda.arrays[f"{key}__F"])
     # the fingers open along the hand y axis, in opposite directions, with the grip site 0.097 m down hand z
     assert model["source"]["grip_site_in_hand_m"] == [0.0, 0.0, 0.097]
