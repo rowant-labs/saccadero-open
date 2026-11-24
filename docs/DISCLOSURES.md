@@ -15,8 +15,9 @@ is the short list; the rest is the full one. Where a statement rests on somethin
 4. **It uses the benchmark's object models.** Object shapes and fixture joints are built from the benchmark's own
    asset files. A learned policy does not get those.
 5. **Not submitted, not a placement.** Both runs fall between the best (81.7) and the second (75.0) of the 20
-   models on the public board as we read it on 2026-11-17. That is where the number sits beside the board, not a
-   rank among its models. Nobody at the benchmark has checked it.
+   models on the public board as we read it on 2026-11-17. Read again on 2026-11-24 it listed 22 models, with the
+   same two at the top. That is where the number sits beside the board, not a rank among its models. Nobody at
+   the benchmark has checked it.
 6. **Two runs, always together.** The second is a second attempt on a test split that was no longer unseen. The
    two are level.
 7. **The headline depends on the formula.** 81.1 by the weighting the board's own averages follow, 81.2 by the

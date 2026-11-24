@@ -5,7 +5,7 @@ type: software
 authors:
   - name: "Rowant Labs"
 license: MIT
-date-released: "2026-11-22"
+date-released: "2026-11-24"
 version: "1.0.0"
 abstract: >-
   A robot program for the LIBERO-Pro2.0 simulation benchmark, written without demonstrations, a policy network or

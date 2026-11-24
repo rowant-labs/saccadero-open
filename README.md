@@ -39,7 +39,8 @@ Two runs of the benchmark's test split (10,170 episodes each), each registered b
 - **Simulation only.**
 - **Not a board placement.** Nothing was submitted and nobody at the benchmark has checked these numbers. For
   scale: when we read the board on 2026-11-17 it listed 20 models, the best at 81.7 and the second at 75.0. Both
-  runs fall between those two. That is a number beside the board, not a rank among its models.
+  runs fall between those two. On 2026-11-24 it listed 22 models, with the same two at the top. That is a number
+  beside the board, not a rank among its models.
 - **Both runs are always reported together.** The second is a second attempt on a test split that was no longer
   unseen. The two are level; the second is not an improvement.
 
